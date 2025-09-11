@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="POS_display.wpf.View.FMDdlg"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POS_display.wpf.View"
+             Loaded="UserControl_Loaded"
+             mc:Ignorable="d" 
+             Height="560" Width="670">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="style/defaultStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="95"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Patvirtinti" Grid.Row="0" Command="{Binding SubmitCommand}" IsEnabled="{Binding SubmitEnabled}" Style="{StaticResource defaultButton}"/>
+        <Label Content="Dokumento numeris" Grid.Row="1" Style="{StaticResource defaultLabel}"/>
+        <TextBox x:Name="tbDocumentNumber" Grid.Row="1" Grid.Column="1" Text="{Binding DocumentNumber}" IsReadOnly="{Binding DocumentNumberReadOnly}" Style="{StaticResource defaultTextBox}" />
+        <Label Content="Būsimas statusas" Grid.Row="2" Style="{StaticResource defaultLabel}"/>
+        <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding StateList, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding SelectedState}" Style="{StaticResource defaultComboBox}"/>
+        <local:FMDposd Grid.Row="3" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="4" HorizontalAlignment="Left" VerticalAlignment="Top" Loaded="UserControl_Loaded"/>
+    </Grid>
+</UserControl>

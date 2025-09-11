@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://webservices.dis.ergo.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="HDisWebService" targetNamespace="http://webservices.dis.ergo.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://webservices.dis.ergo.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="authentificateUser">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="username" type="xs:string" />
+            <xs:element minOccurs="0" name="password" type="xs:string" />
+            <xs:element minOccurs="0" name="countryCode" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="authentificateUserEEResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="xs:string" />
+            <xs:element minOccurs="0" name="daysToChangePassword" type="xs:int" />
+            <xs:element minOccurs="0" name="status" type="xs:int" />
+            <xs:element minOccurs="0" name="statusText" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="authentificateUserLTResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="xs:string" />
+            <xs:element minOccurs="0" name="daysToChangePassword" type="xs:int" />
+            <xs:element minOccurs="0" name="status" type="xs:int" />
+            <xs:element minOccurs="0" name="statusText" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="authentificateUserResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="xs:string" />
+            <xs:element minOccurs="0" name="daysToChangePassword" type="xs:int" />
+            <xs:element minOccurs="0" name="status" type="xs:int" />
+            <xs:element minOccurs="0" name="statusText" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cancelClaimsDetList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sessionKey" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="detalizationIdsList" nillable="true" type="tns:healthServiceDetId" />
+            <xs:element minOccurs="0" name="countryCode" type="xs:string" />
+            <xs:element minOccurs="0" name="language" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cancelClaimsDetListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="tns:claimsDetListServiceRetParam" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cancelClaimsMedList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sessionKey" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="detalizationIdsList" nillable="true" type="tns:healthServiceDetId" />
+            <xs:element minOccurs="0" name="countryCode" type="xs:string" />
+            <xs:element minOccurs="0" name="language" type="xs:string" />
+            <xs:element minOccurs="0" name="pharmCode" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cancelClaimsMedListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="tns:claimsMedListServiceRetParam" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="checkClaimsDetList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sessionKey" type="xs:string" />
+            <xs:element minOccurs="0" name="medInstCode" type="xs:string" />
+            <xs:element minOccurs="0" name="insPersCode" type="xs:string" />
+            <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+            <xs:element minOccurs="0" name="eventDate" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="servicesInList" nillable="true" type="tns:healthService" />
+            <xs:element minOccurs="0" name="countryCode" type="xs:string" />
+            <xs:element minOccurs="0" name="language" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="checkClaimsDetListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="tns:claimsDetListServiceRetParam" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="checkClaimsMedList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sessionKey" type="xs:string" />
+            <xs:element minOccurs="0" name="medInstCode" type="xs:string" />
+            <xs:element minOccurs="0" name="insPersCode" type="xs:string" />
+            <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+            <xs:element minOccurs="0" name="eventDate" type="xs:string" />
+            <xs:element minOccurs="0" name="countryCode" type="xs:string" />
+            <xs:element minOccurs="0" name="language" type="xs:string" />
+            <xs:element minOccurs="0" name="pharmCode" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="servicesInList" nillable="true" type="tns:healthMedService" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="checkClaimsMedListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="tns:claimsMedListServiceRetParam" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="checkSession">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sessionKey" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="checkSessionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="tns:baseRetParam" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="createClaimsDetList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sessionKey" type="xs:string" />
+            <xs:element minOccurs="0" name="medInstCode" type="xs:string" />
+            <xs:element minOccurs="0" name="insPersCode" type="xs:string" />
+            <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+            <xs:element minOccurs="0" name="eventDate" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="servicesInList" nillable="true" type="tns:healthService" />
+            <xs:element minOccurs="0" name="countryCode" type="xs:string" />
+            <xs:element minOccurs="0" name="language" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="createClaimsDetListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="tns:claimsDetListServiceRetParam" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="createClaimsMedList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="sessionKey" type="xs:string" />
+            <xs:element minOccurs="0" name="medInstCode" type="xs:string" />
+            <xs:element minOccurs="0" name="insPersCode" type="xs:string" />
+            <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+            <xs:element minOccurs="0" name="eventDate" type="xs:string" />
+            <xs:element minOccurs="0" name="countryCode" type="xs:string" />
+            <xs:element minOccurs="0" name="language" type="xs:string" />
+            <xs:element minOccurs="0" name="pharmCode" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="servicesInList" nillable="true" type="tns:healthMedService" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="createClaimsMedListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="tns:claimsMedListServiceRetParam" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="validateClaimsDetList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sessionKey" type="xs:string" />
+            <xs:element minOccurs="0" name="medInstCode" type="xs:string" />
+            <xs:element minOccurs="0" name="insPersCode" type="xs:string" />
+            <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+            <xs:element minOccurs="0" name="eventDate" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="servicesInList" nillable="true" type="tns:healthService" />
+            <xs:element minOccurs="0" name="countryCode" type="xs:string" />
+            <xs:element minOccurs="0" name="language" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="validateClaimsDetListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="tns:claimsDetListServiceRetParam" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="validateClaimsMedList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sessionKey" type="xs:string" />
+            <xs:element minOccurs="0" name="medInstCode" type="xs:string" />
+            <xs:element minOccurs="0" name="insPersCode" type="xs:string" />
+            <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+            <xs:element minOccurs="0" name="eventDate" type="xs:string" />
+            <xs:element minOccurs="0" name="countryCode" type="xs:string" />
+            <xs:element minOccurs="0" name="language" type="xs:string" />
+            <xs:element minOccurs="0" name="pharmCode" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="servicesInList" nillable="true" type="tns:healthMedService" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="validateClaimsMedListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="tns:claimsMedListServiceRetParam" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="healthServiceDetId">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="detId" type="xs:string" />
+          <xs:element minOccurs="0" name="requestNo" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="claimsMedListServiceRetParam">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseRetParam">
+            <xs:sequence>
+              <xs:element minOccurs="0" form="qualified" name="isPayable" type="xs:int" />
+              <xs:element minOccurs="0" form="qualified" name="explanation" type="xs:string" />
+              <xs:element minOccurs="0" form="qualified" name="nCode" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" form="qualified" name="servicesOutList" nillable="true" type="tns:servicesOutListParams" />
+              <xs:element minOccurs="0" form="qualified" name="cardNumber" type="xs:string" />
+              <xs:element minOccurs="0" form="qualified" name="insFullName" type="xs:string" />
+              <xs:element minOccurs="0" form="qualified" name="pharmCode" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="baseRetParam">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" form="qualified" name="errorsInfo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" form="qualified" name="status" type="xs:int" />
+          <xs:element minOccurs="0" form="qualified" name="statusText" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="servicesOutListParams">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="clientSum" type="xs:double" />
+          <xs:element minOccurs="0" form="qualified" name="discount" type="xs:double" />
+          <xs:element minOccurs="0" form="qualified" name="explanation" type="xs:string" />
+          <xs:element minOccurs="0" form="qualified" name="hidtID" type="xs:long" />
+          <xs:element minOccurs="0" form="qualified" name="paidSum" type="xs:double" />
+          <xs:element minOccurs="0" form="qualified" name="paymSum" type="xs:double" />
+          <xs:element minOccurs="0" form="qualified" name="requestNo" type="xs:string" />
+          <xs:element minOccurs="0" form="qualified" name="serviceCode" type="xs:string" />
+          <xs:element minOccurs="0" form="qualified" name="status" type="xs:int" />
+          <xs:element minOccurs="0" form="qualified" name="nCode" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="claimsDetListServiceRetParam">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseRetParam">
+            <xs:sequence>
+              <xs:element minOccurs="0" form="qualified" name="cardNumber" type="xs:string" />
+              <xs:element minOccurs="0" form="qualified" name="explanation" type="xs:string" />
+              <xs:element minOccurs="0" form="qualified" name="isPayable" type="xs:int" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" form="qualified" name="servicesOutList" nillable="true" type="tns:servicesOutListParams" />
+              <xs:element minOccurs="0" form="qualified" name="nCode" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="healthService">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="diagnosis" type="xs:string" />
+          <xs:element minOccurs="0" name="serviceCode" type="xs:string" />
+          <xs:element minOccurs="0" name="serviceCount" type="xs:int" />
+          <xs:element minOccurs="0" name="sum" type="xs:double" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="healthMedService">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:healthService">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="recDoc" type="xs:string" />
+              <xs:element minOccurs="0" name="recInst" type="xs:string" />
+              <xs:element minOccurs="0" name="hasRec" type="xs:boolean" />
+              <xs:element minOccurs="0" name="requestNo" type="xs:string" />
+              <xs:element minOccurs="0" name="medName" type="xs:string" />
+              <xs:element minOccurs="0" name="receiptDate" type="xs:string" />
+              <xs:element minOccurs="0" name="compByGov" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="authentificateUserEE" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="username" type="xs:string" />
+            <xs:element minOccurs="0" name="password" type="xs:string" />
+            <xs:element minOccurs="0" name="countryCode" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="authentificateUserLT" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="username" type="xs:string" />
+            <xs:element minOccurs="0" name="password" type="xs:string" />
+            <xs:element minOccurs="0" name="countryCode" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="cancelClaimsMedList">
+    <wsdl:part name="cancelClaimsMedList" element="tns:cancelClaimsMedList" />
+  </wsdl:message>
+  <wsdl:message name="authentificateUserLTResponse">
+    <wsdl:part name="authentificateUserLTResponse" element="tns:authentificateUserLTResponse" />
+  </wsdl:message>
+  <wsdl:message name="authentificateUserEEResponse">
+    <wsdl:part name="authentificateUserEEResponse" element="tns:authentificateUserEEResponse" />
+  </wsdl:message>
+  <wsdl:message name="createClaimsMedListResponse">
+    <wsdl:part name="createClaimsMedListResponse" element="tns:createClaimsMedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="checkClaimsDetList">
+    <wsdl:part name="checkClaimsDetList" element="tns:checkClaimsDetList" />
+  </wsdl:message>
+  <wsdl:message name="authentificateUser">
+    <wsdl:part name="authentificateUser" element="tns:authentificateUser" />
+  </wsdl:message>
+  <wsdl:message name="createClaimsDetListResponse">
+    <wsdl:part name="createClaimsDetListResponse" element="tns:createClaimsDetListResponse" />
+  </wsdl:message>
+  <wsdl:message name="createClaimsMedList">
+    <wsdl:part name="createClaimsMedList" element="tns:createClaimsMedList" />
+  </wsdl:message>
+  <wsdl:message name="cancelClaimsDetList">
+    <wsdl:part name="cancelClaimsDetList" element="tns:cancelClaimsDetList" />
+  </wsdl:message>
+  <wsdl:message name="validateClaimsDetList">
+    <wsdl:part name="validateClaimsDetList" element="tns:validateClaimsDetList" />
+  </wsdl:message>
+  <wsdl:message name="authentificateUserEE">
+    <wsdl:part name="authentificateUserEE" element="tns:authentificateUserEE" />
+  </wsdl:message>
+  <wsdl:message name="validateClaimsMedList">
+    <wsdl:part name="validateClaimsMedList" element="tns:validateClaimsMedList" />
+  </wsdl:message>
+  <wsdl:message name="checkClaimsMedListResponse">
+    <wsdl:part name="checkClaimsMedListResponse" element="tns:checkClaimsMedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="checkClaimsDetListResponse">
+    <wsdl:part name="checkClaimsDetListResponse" element="tns:checkClaimsDetListResponse" />
+  </wsdl:message>
+  <wsdl:message name="checkSessionResponse">
+    <wsdl:part name="checkSessionResponse" element="tns:checkSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="checkSession">
+    <wsdl:part name="checkSession" element="tns:checkSession" />
+  </wsdl:message>
+  <wsdl:message name="authentificateUserLT">
+    <wsdl:part name="authentificateUserLT" element="tns:authentificateUserLT" />
+  </wsdl:message>
+  <wsdl:message name="validateClaimsDetListResponse">
+    <wsdl:part name="validateClaimsDetListResponse" element="tns:validateClaimsDetListResponse" />
+  </wsdl:message>
+  <wsdl:message name="cancelClaimsMedListResponse">
+    <wsdl:part name="cancelClaimsMedListResponse" element="tns:cancelClaimsMedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="authentificateUserResponse">
+    <wsdl:part name="authentificateUserResponse" element="tns:authentificateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="cancelClaimsDetListResponse">
+    <wsdl:part name="cancelClaimsDetListResponse" element="tns:cancelClaimsDetListResponse" />
+  </wsdl:message>
+  <wsdl:message name="validateClaimsMedListResponse">
+    <wsdl:part name="validateClaimsMedListResponse" element="tns:validateClaimsMedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="createClaimsDetList">
+    <wsdl:part name="createClaimsDetList" element="tns:createClaimsDetList" />
+  </wsdl:message>
+  <wsdl:message name="checkClaimsMedList">
+    <wsdl:part name="checkClaimsMedList" element="tns:checkClaimsMedList" />
+  </wsdl:message>
+  <wsdl:portType name="HDisWebService">
+    <wsdl:operation name="cancelClaimsMedList">
+      <wsdl:input name="cancelClaimsMedList" message="tns:cancelClaimsMedList" />
+      <wsdl:output name="cancelClaimsMedListResponse" message="tns:cancelClaimsMedListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="checkClaimsDetList">
+      <wsdl:input name="checkClaimsDetList" message="tns:checkClaimsDetList" />
+      <wsdl:output name="checkClaimsDetListResponse" message="tns:checkClaimsDetListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="authentificateUser">
+      <wsdl:input name="authentificateUser" message="tns:authentificateUser" />
+      <wsdl:output name="authentificateUserResponse" message="tns:authentificateUserResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createClaimsMedList">
+      <wsdl:input name="createClaimsMedList" message="tns:createClaimsMedList" />
+      <wsdl:output name="createClaimsMedListResponse" message="tns:createClaimsMedListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cancelClaimsDetList">
+      <wsdl:input name="cancelClaimsDetList" message="tns:cancelClaimsDetList" />
+      <wsdl:output name="cancelClaimsDetListResponse" message="tns:cancelClaimsDetListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="validateClaimsDetList">
+      <wsdl:input name="validateClaimsDetList" message="tns:validateClaimsDetList" />
+      <wsdl:output name="validateClaimsDetListResponse" message="tns:validateClaimsDetListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="authentificateUserEE">
+      <wsdl:input name="authentificateUserEE" message="tns:authentificateUserEE" />
+      <wsdl:output name="authentificateUserEEResponse" message="tns:authentificateUserEEResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="validateClaimsMedList">
+      <wsdl:input name="validateClaimsMedList" message="tns:validateClaimsMedList" />
+      <wsdl:output name="validateClaimsMedListResponse" message="tns:validateClaimsMedListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="checkSession">
+      <wsdl:input name="checkSession" message="tns:checkSession" />
+      <wsdl:output name="checkSessionResponse" message="tns:checkSessionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="authentificateUserLT">
+      <wsdl:input name="authentificateUserLT" message="tns:authentificateUserLT" />
+      <wsdl:output name="authentificateUserLTResponse" message="tns:authentificateUserLTResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createClaimsDetList">
+      <wsdl:input name="createClaimsDetList" message="tns:createClaimsDetList" />
+      <wsdl:output name="createClaimsDetListResponse" message="tns:createClaimsDetListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="checkClaimsMedList">
+      <wsdl:input name="checkClaimsMedList" message="tns:checkClaimsMedList" />
+      <wsdl:output name="checkClaimsMedListResponse" message="tns:checkClaimsMedListResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HDisWebServiceSoapBinding" type="tns:HDisWebService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="cancelClaimsMedList">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="cancelClaimsMedList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="cancelClaimsMedListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authentificateUser">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="authentificateUser">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="authentificateUserResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkClaimsDetList">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="checkClaimsDetList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="checkClaimsDetListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createClaimsMedList">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="createClaimsMedList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="createClaimsMedListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateClaimsDetList">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="validateClaimsDetList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="validateClaimsDetListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelClaimsDetList">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="cancelClaimsDetList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="cancelClaimsDetListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authentificateUserEE">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="authentificateUserEE">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="authentificateUserEEResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateClaimsMedList">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="validateClaimsMedList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="validateClaimsMedListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkSession">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="checkSession">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="checkSessionResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authentificateUserLT">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="authentificateUserLT">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="authentificateUserLTResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createClaimsDetList">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="createClaimsDetList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="createClaimsDetListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkClaimsMedList">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="checkClaimsMedList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="checkClaimsMedListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HDisWebService">
+    <wsdl:port name="HDisWebServicePort" binding="tns:HDisWebServiceSoapBinding">
+      <soap:address location="https://hdis-ws-test.ergo.lv/hdiswebservices/service/hdis" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://it-agent1.phoenix.loc:8186/Privat.asmx?wsdl" docRef="http://it-agent1.phoenix.loc:8186/Privat.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://it-agent1.phoenix.loc:8186/Privat.asmx" xmlns:q1="http://tempuri.org/" binding="q1:PrivatSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://it-agent1.phoenix.loc:8186/Privat.asmx" xmlns:q2="http://tempuri.org/" binding="q2:PrivatSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

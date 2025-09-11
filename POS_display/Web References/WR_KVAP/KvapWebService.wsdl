@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://kvapws.algoritmusistemos.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="KvapWebService" targetNamespace="http://kvapws.algoritmusistemos.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="KvapWebServiceSchema.xsd" namespace="http://kvapws.algoritmusistemos.com/" />
+    </xsd:schema>
+  </types>
+  <message name="getGydIstaigaList">
+    <part name="parameters" element="tns:getGydIstaigaList" />
+  </message>
+  <message name="getGydIstaigaListResponse">
+    <part name="parameters" element="tns:getGydIstaigaListResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <message name="getKlaidaList">
+    <part name="parameters" element="tns:getKlaidaList" />
+  </message>
+  <message name="getKlaidaListResponse">
+    <part name="parameters" element="tns:getKlaidaListResponse" />
+  </message>
+  <message name="getKompRusisList">
+    <part name="parameters" element="tns:getKompRusisList" />
+  </message>
+  <message name="getKompRusisListResponse">
+    <part name="parameters" element="tns:getKompRusisListResponse" />
+  </message>
+  <message name="getOptikaList">
+    <part name="parameters" element="tns:getOptikaList" />
+  </message>
+  <message name="getOptikaListResponse">
+    <part name="parameters" element="tns:getOptikaListResponse" />
+  </message>
+  <message name="getUkioSubjektaiList">
+    <part name="parameters" element="tns:getUkioSubjektaiList" />
+  </message>
+  <message name="getUkioSubjektaiListResponse">
+    <part name="parameters" element="tns:getUkioSubjektaiListResponse" />
+  </message>
+  <message name="getVaistineList">
+    <part name="parameters" element="tns:getVaistineList" />
+  </message>
+  <message name="getVaistineListResponse">
+    <part name="parameters" element="tns:getVaistineListResponse" />
+  </message>
+  <message name="getVaistininkasList">
+    <part name="parameters" element="tns:getVaistininkasList" />
+  </message>
+  <message name="getVaistininkasListResponse">
+    <part name="parameters" element="tns:getVaistininkasListResponse" />
+  </message>
+  <message name="submitKVRCreate">
+    <part name="parameters" element="tns:submitKVRCreate" />
+  </message>
+  <message name="submitKVRCreateResponse">
+    <part name="parameters" element="tns:submitKVRCreateResponse" />
+  </message>
+  <message name="submitKVRDelete">
+    <part name="parameters" element="tns:submitKVRDelete" />
+  </message>
+  <message name="submitKVRDeleteResponse">
+    <part name="parameters" element="tns:submitKVRDeleteResponse" />
+  </message>
+  <message name="submitKVRRetrieve">
+    <part name="parameters" element="tns:submitKVRRetrieve" />
+  </message>
+  <message name="submitKVRRetrieveResponse">
+    <part name="parameters" element="tns:submitKVRRetrieveResponse" />
+  </message>
+  <message name="submitKVRUpdate">
+    <part name="parameters" element="tns:submitKVRUpdate" />
+  </message>
+  <message name="submitKVRUpdateResponse">
+    <part name="parameters" element="tns:submitKVRUpdateResponse" />
+  </message>
+  <message name="submitKVRCheck">
+    <part name="parameters" element="tns:submitKVRCheck" />
+  </message>
+  <message name="submitKVRCheckResponse">
+    <part name="parameters" element="tns:submitKVRCheckResponse" />
+  </message>
+  <message name="getKainynoVersijaList">
+    <part name="parameters" element="tns:getKainynoVersijaList" />
+  </message>
+  <message name="getKainynoVersijaListResponse">
+    <part name="parameters" element="tns:getKainynoVersijaListResponse" />
+  </message>
+  <message name="getGydytojasList">
+    <part name="parameters" element="tns:getGydytojasList" />
+  </message>
+  <message name="getGydytojasListResponse">
+    <part name="parameters" element="tns:getGydytojasListResponse" />
+  </message>
+  <message name="getEsInstList">
+    <part name="parameters" element="tns:getEsInstList" />
+  </message>
+  <message name="getEsInstListResponse">
+    <part name="parameters" element="tns:getEsInstListResponse" />
+  </message>
+  <message name="getPeriodas">
+    <part name="parameters" element="tns:getPeriodas" />
+  </message>
+  <message name="getPeriodasResponse">
+    <part name="parameters" element="tns:getPeriodasResponse" />
+  </message>
+  <message name="getKVRList">
+    <part name="parameters" element="tns:getKVRList" />
+  </message>
+  <message name="getKVRListResponse">
+    <part name="parameters" element="tns:getKVRListResponse" />
+  </message>
+  <message name="getLigaList">
+    <part name="parameters" element="tns:getLigaList" />
+  </message>
+  <message name="getLigaListResponse">
+    <part name="parameters" element="tns:getLigaListResponse" />
+  </message>
+  <message name="getVaistasList">
+    <part name="parameters" element="tns:getVaistasList" />
+  </message>
+  <message name="getVaistasListResponse">
+    <part name="parameters" element="tns:getVaistasListResponse" />
+  </message>
+  <message name="getMPPList">
+    <part name="parameters" element="tns:getMPPList" />
+  </message>
+  <message name="getMPPListResponse">
+    <part name="parameters" element="tns:getMPPListResponse" />
+  </message>
+  <message name="getZinynoReiksmeList">
+    <part name="parameters" element="tns:getZinynoReiksmeList" />
+  </message>
+  <message name="getZinynoReiksmeListResponse">
+    <part name="parameters" element="tns:getZinynoReiksmeListResponse" />
+  </message>
+  <message name="getSPSTPLDetails">
+    <part name="parameters" element="tns:getSPSTPLDetails" />
+  </message>
+  <message name="getSPSTPLDetailsResponse">
+    <part name="parameters" element="tns:getSPSTPLDetailsResponse" />
+  </message>
+  <portType name="KvapWebService">
+    <operation name="getGydIstaigaList">
+      <input message="tns:getGydIstaigaList" />
+      <output message="tns:getGydIstaigaListResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getKlaidaList">
+      <input message="tns:getKlaidaList" />
+      <output message="tns:getKlaidaListResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getKompRusisList">
+      <input message="tns:getKompRusisList" />
+      <output message="tns:getKompRusisListResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getOptikaList">
+      <input message="tns:getOptikaList" />
+      <output message="tns:getOptikaListResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getUkioSubjektaiList">
+      <input message="tns:getUkioSubjektaiList" />
+      <output message="tns:getUkioSubjektaiListResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getVaistineList">
+      <input message="tns:getVaistineList" />
+      <output message="tns:getVaistineListResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getVaistininkasList">
+      <input message="tns:getVaistininkasList" />
+      <output message="tns:getVaistininkasListResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="submitKVRCreate">
+      <input message="tns:submitKVRCreate" />
+      <output message="tns:submitKVRCreateResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="submitKVRDelete">
+      <input message="tns:submitKVRDelete" />
+      <output message="tns:submitKVRDeleteResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="submitKVRRetrieve">
+      <input message="tns:submitKVRRetrieve" />
+      <output message="tns:submitKVRRetrieveResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="submitKVRUpdate">
+      <input message="tns:submitKVRUpdate" />
+      <output message="tns:submitKVRUpdateResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="submitKVRCheck">
+      <input message="tns:submitKVRCheck" />
+      <output message="tns:submitKVRCheckResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getKainynoVersijaList">
+      <input message="tns:getKainynoVersijaList" />
+      <output message="tns:getKainynoVersijaListResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getGydytojasList">
+      <input message="tns:getGydytojasList" />
+      <output message="tns:getGydytojasListResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getEsInstList">
+      <input message="tns:getEsInstList" />
+      <output message="tns:getEsInstListResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getPeriodas">
+      <input message="tns:getPeriodas" />
+      <output message="tns:getPeriodasResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getKVRList">
+      <input message="tns:getKVRList" />
+      <output message="tns:getKVRListResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getLigaList">
+      <input message="tns:getLigaList" />
+      <output message="tns:getLigaListResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getVaistasList">
+      <input message="tns:getVaistasList" />
+      <output message="tns:getVaistasListResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getMPPList">
+      <input message="tns:getMPPList" />
+      <output message="tns:getMPPListResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getZinynoReiksmeList">
+      <input message="tns:getZinynoReiksmeList" />
+      <output message="tns:getZinynoReiksmeListResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="getSPSTPLDetails">
+      <input message="tns:getSPSTPLDetails" />
+      <output message="tns:getSPSTPLDetailsResponse" />
+      <fault name="Exception" message="tns:Exception" />
+    </operation>
+  </portType>
+  <binding name="KvapWebServicePortBinding" type="tns:KvapWebService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="getGydIstaigaList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getKlaidaList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getKompRusisList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getOptikaList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getUkioSubjektaiList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getVaistineList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getVaistininkasList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="submitKVRCreate">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="submitKVRDelete">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="submitKVRRetrieve">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="submitKVRUpdate">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="submitKVRCheck">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getKainynoVersijaList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getGydytojasList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getEsInstList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getPeriodas">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getKVRList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getLigaList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getVaistasList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getMPPList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getZinynoReiksmeList">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getSPSTPLDetails">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="KvapWebService">
+    <port name="KvapWebServicePort" binding="tns:KvapWebServicePortBinding">
+      <soap:address location="https://kvap-ws.svp.vlk.lt:443/ws" />
+    </port>
+  </service>
+</definitions>

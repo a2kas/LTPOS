@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/FMD.DTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/FMD.DTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Pack">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="batchId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="expiryDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="productCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="productCodeScheme" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="serialNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Pack" nillable="true" type="tns:Pack" />
+  <xs:complexType name="APIresponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="state" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="APIresponse" nillable="true" type="tns:APIresponse" />
+  <xs:complexType name="Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+      <xs:element minOccurs="0" name="information" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="jsonRequest" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="jsonResponse" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Response" nillable="true" type="tns:Response" />
+  <xs:simpleType name="State">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Active" />
+      <xs:enumeration value="Supplied" />
+      <xs:enumeration value="Exported" />
+      <xs:enumeration value="Stolen" />
+      <xs:enumeration value="Sample" />
+      <xs:enumeration value="FreeSample" />
+      <xs:enumeration value="Locked" />
+      <xs:enumeration value="Destroyed" />
+      <xs:enumeration value="Recalled" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="State" nillable="true" type="tns:State" />
+  <xs:complexType name="ArrayOfPack">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Pack" nillable="true" type="tns:Pack" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPack" nillable="true" type="tns:ArrayOfPack" />
+  <xs:complexType name="BulkOfPacksResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="eta" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="expires" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="operationCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BulkOfPacksResponse" nillable="true" type="tns:BulkOfPacksResponse" />
+  <xs:complexType name="LocationResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="operationCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="packs" nillable="true" type="tns:ArrayOfData" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LocationResponse" nillable="true" type="tns:LocationResponse" />
+  <xs:complexType name="ArrayOfData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Data" nillable="true" type="tns:Data" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfData" nillable="true" type="tns:ArrayOfData" />
+  <xs:complexType name="Data">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pack" nillable="true" type="tns:Pack" />
+      <xs:element minOccurs="0" name="result" nillable="true" type="tns:SinglePackResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Data" nillable="true" type="tns:Data" />
+  <xs:complexType name="SinglePackResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:APIresponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="alertId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="operationCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="warning" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SinglePackResponse" nillable="true" type="tns:SinglePackResponse" />
+</xs:schema>

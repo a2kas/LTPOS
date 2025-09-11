@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServiceFMD" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://appserv.phoenix.loc:8083/ServiceFMD.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://appserv.phoenix.loc:8083/ServiceFMD.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://appserv.phoenix.loc:8083/ServiceFMD.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/FMD.DTO" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServiceFMD_VerifySinglePack_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerifySinglePack" />
+  </wsdl:message>
+  <wsdl:message name="IServiceFMD_VerifySinglePack_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerifySinglePackResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceFMD_ChangeStateSinglePack_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeStateSinglePack" />
+  </wsdl:message>
+  <wsdl:message name="IServiceFMD_ChangeStateSinglePack_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeStateSinglePackResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceFMD_VerifyBulkOfPacks_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyBulkOfPacks" />
+  </wsdl:message>
+  <wsdl:message name="IServiceFMD_VerifyBulkOfPacks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyBulkOfPacksResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceFMD_ChangeStateBulkOfPacks_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeStateBulkOfPacks" />
+  </wsdl:message>
+  <wsdl:message name="IServiceFMD_ChangeStateBulkOfPacks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeStateBulkOfPacksResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceFMD_ResponseBulkOfPacks_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResponseBulkOfPacks" />
+  </wsdl:message>
+  <wsdl:message name="IServiceFMD_ResponseBulkOfPacks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResponseBulkOfPacksResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceFMD_ResponseBulkOfPacksById_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResponseBulkOfPacksById" />
+  </wsdl:message>
+  <wsdl:message name="IServiceFMD_ResponseBulkOfPacksById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResponseBulkOfPacksByIdResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServiceFMD">
+    <wsdl:operation name="VerifySinglePack">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceFMD/VerifySinglePack" message="tns:IServiceFMD_VerifySinglePack_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceFMD/VerifySinglePackResponse" message="tns:IServiceFMD_VerifySinglePack_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeStateSinglePack">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceFMD/ChangeStateSinglePack" message="tns:IServiceFMD_ChangeStateSinglePack_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceFMD/ChangeStateSinglePackResponse" message="tns:IServiceFMD_ChangeStateSinglePack_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyBulkOfPacks">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceFMD/VerifyBulkOfPacks" message="tns:IServiceFMD_VerifyBulkOfPacks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceFMD/VerifyBulkOfPacksResponse" message="tns:IServiceFMD_VerifyBulkOfPacks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeStateBulkOfPacks">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceFMD/ChangeStateBulkOfPacks" message="tns:IServiceFMD_ChangeStateBulkOfPacks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceFMD/ChangeStateBulkOfPacksResponse" message="tns:IServiceFMD_ChangeStateBulkOfPacks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponseBulkOfPacks">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceFMD/ResponseBulkOfPacks" message="tns:IServiceFMD_ResponseBulkOfPacks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceFMD/ResponseBulkOfPacksResponse" message="tns:IServiceFMD_ResponseBulkOfPacks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponseBulkOfPacksById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceFMD/ResponseBulkOfPacksById" message="tns:IServiceFMD_ResponseBulkOfPacksById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceFMD/ResponseBulkOfPacksByIdResponse" message="tns:IServiceFMD_ResponseBulkOfPacksById_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServiceFMD" type="tns:IServiceFMD">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="VerifySinglePack">
+      <soap:operation soapAction="http://tempuri.org/IServiceFMD/VerifySinglePack" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeStateSinglePack">
+      <soap:operation soapAction="http://tempuri.org/IServiceFMD/ChangeStateSinglePack" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyBulkOfPacks">
+      <soap:operation soapAction="http://tempuri.org/IServiceFMD/VerifyBulkOfPacks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeStateBulkOfPacks">
+      <soap:operation soapAction="http://tempuri.org/IServiceFMD/ChangeStateBulkOfPacks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseBulkOfPacks">
+      <soap:operation soapAction="http://tempuri.org/IServiceFMD/ResponseBulkOfPacks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseBulkOfPacksById">
+      <soap:operation soapAction="http://tempuri.org/IServiceFMD/ResponseBulkOfPacksById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceFMD">
+    <wsdl:port name="BasicHttpBinding_IServiceFMD" binding="tns:BasicHttpBinding_IServiceFMD">
+      <soap:address location="http://appserv.phoenix.loc:8083/ServiceFMD.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

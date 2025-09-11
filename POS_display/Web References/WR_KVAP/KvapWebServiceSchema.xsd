@@ -1,0 +1,1292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:tns="http://kvapws.algoritmusistemos.com/" xmlns:annox="http://annox.dev.java.net" targetNamespace="http://kvapws.algoritmusistemos.com/" version="1.0" jaxb:extensionBindingPrefixes="annox" jaxb:version="2.1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="SOAP_REZULTATAS">
+    <xs:complexType>
+      <xs:sequence maxOccurs="1">
+        <xs:element name="UZKL_APD_REZ">
+          <xs:complexType>
+            <xs:sequence maxOccurs="1">
+              <xs:element name="APDOROJIMO_KODAS" type="xs:integer" />
+              <xs:element name="APDOROJIMO_PRANESIMAS" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="REZULTATAI">
+          <xs:complexType>
+            <xs:sequence maxOccurs="1">
+              <xs:choice>
+                <xs:element name="KV_VAISTAI" type="tns:KV_VAISTAI" />
+                <xs:element name="LIGOS" type="tns:LIGOS" />
+                <xs:element name="GYDYTOJAI" type="tns:GYDYTOJAI" />
+                <xs:element minOccurs="0" name="ES_KOMP_INSTITUCIJOS" type="tns:ES_KOMP_INSTITUCIJOS" />
+                <xs:element minOccurs="0" name="KV_RECEPTAI" type="tns:KV_RECEPTAI" />
+                <xs:element minOccurs="0" name="CG_REF_CODES" type="tns:CG_REF_CODES" />
+                <xs:element minOccurs="0" name="VAISTININKAI" type="tns:VAISTININKAI" />
+                <xs:element minOccurs="0" name="VAISTINES" type="tns:VAISTINES" />
+                <xs:element minOccurs="0" name="TIKRINIMO_TAISYKLES" type="tns:TIKRINIMO_TAISYKLES" />
+                <xs:element minOccurs="0" name="GYDYMO_ISTAIGOS" type="tns:GYDYMO_ISTAIGOS" />
+                <xs:element minOccurs="0" name="KAINYNU_VERSIJOS" type="tns:KAINYNU_VERSIJOS" />
+                <xs:element minOccurs="0" name="KV_PERIODAI" type="tns:KV_PERIODAI" />
+                <xs:element minOccurs="0" name="UKIAI" type="tns:UKIAI" />
+                <xs:element minOccurs="0" name="OPTIKOS" type="tns:OPTIKOS" />
+                <xs:element minOccurs="0" name="KOMPENSACIJOS_RUSYS" type="tns:KOMPENSACIJOS_RUSYS" />
+                <xs:element minOccurs="0" name="SPSTPL_DETAILS" type="tns:SPSTPL_DETAILS" />
+              </xs:choice>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="getGydytojasListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:SOAP_REZULTATAS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGydIstaigaListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:SOAP_REZULTATAS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUkioSubjektaiListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:SOAP_REZULTATAS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getOptikaListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:SOAP_REZULTATAS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getLigaListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:SOAP_REZULTATAS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEsInstListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:SOAP_REZULTATAS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getVaistasListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:SOAP_REZULTATAS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMPPListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:SOAP_REZULTATAS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getVaistininkasListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:SOAP_REZULTATAS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getVaistineListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:SOAP_REZULTATAS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getZinynoReiksmeListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:SOAP_REZULTATAS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getSPSTPLDetailsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:SOAP_REZULTATAS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getKlaidaListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:SOAP_REZULTATAS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPeriodasResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:SOAP_REZULTATAS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getKainynoVersijaListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:SOAP_REZULTATAS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="submitKVRUpdateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:SOAP_REZULTATAS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="submitKVRCreateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:SOAP_REZULTATAS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="submitKVRRetrieveResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:SOAP_REZULTATAS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="submitKVRDeleteResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:SOAP_REZULTATAS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getKVRListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:SOAP_REZULTATAS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getKompRusisListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:SOAP_REZULTATAS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="submitKVRCheckResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:SOAP_REZULTATAS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="getEsInstList" type="tns:getEsInstList" />
+  <xs:element name="getEsInstListResponse" type="tns:getEsInstListResponse" />
+  <xs:element name="getGydIstaigaList" type="tns:getGydIstaigaList" />
+  <xs:element name="getGydIstaigaListResponse" type="tns:getGydIstaigaListResponse" />
+  <xs:element name="getGydytojasList" type="tns:getGydytojasList" />
+  <xs:element name="getGydytojasListResponse" type="tns:getGydytojasListResponse" />
+  <xs:element name="getKVRList" type="tns:getKVRList" />
+  <xs:element name="getKVRListResponse" type="tns:getKVRListResponse" />
+  <xs:element name="getKainynoVersijaList" type="tns:getKainynoVersijaList" />
+  <xs:element name="getKainynoVersijaListResponse" type="tns:getKainynoVersijaListResponse" />
+  <xs:element name="getKlaidaList" type="tns:getKlaidaList" />
+  <xs:element name="getKlaidaListResponse" type="tns:getKlaidaListResponse" />
+  <xs:element name="getKompRusisList" type="tns:getKompRusisList" />
+  <xs:element name="getKompRusisListResponse" type="tns:getKompRusisListResponse" />
+  <xs:element name="getLigaList" type="tns:getLigaList" />
+  <xs:element name="getLigaListResponse" type="tns:getLigaListResponse" />
+  <xs:element name="getOptikaList" type="tns:getOptikaList" />
+  <xs:element name="getOptikaListResponse" type="tns:getOptikaListResponse" />
+  <xs:element name="getUkioSubjektaiList" type="tns:getUkioSubjektaiList" />
+  <xs:element name="getUkioSubjektaiListResponse" type="tns:getUkioSubjektaiListResponse" />
+  <xs:element name="getPeriodas" type="tns:getPeriodas" />
+  <xs:element name="getPeriodasResponse" type="tns:getPeriodasResponse" />
+  <xs:element name="getVaistasList" type="tns:getVaistasList" />
+  <xs:element name="getVaistasListResponse" type="tns:getVaistasListResponse" />
+  <xs:element name="getMPPList" type="tns:getMPPList" />
+  <xs:element name="getMPPListResponse" type="tns:getMPPListResponse" />
+  <xs:element name="getVaistineList" type="tns:getVaistineList" />
+  <xs:element name="getVaistineListResponse" type="tns:getVaistineListResponse" />
+  <xs:element name="getVaistininkasList" type="tns:getVaistininkasList" />
+  <xs:element name="getVaistininkasListResponse" type="tns:getVaistininkasListResponse" />
+  <xs:element name="getZinynoReiksmeList" type="tns:getZinynoReiksmeList" />
+  <xs:element name="getZinynoReiksmeListResponse" type="tns:getZinynoReiksmeListResponse" />
+  <xs:element name="getSPSTPLDetails" type="tns:getSPSTPLDetails" />
+  <xs:element name="getSPSTPLDetailsResponse" type="tns:getSPSTPLDetailsResponse" />
+  <xs:element name="submitKVRCheck" type="tns:submitKVRCheck" />
+  <xs:element name="submitKVRCheckResponse" type="tns:submitKVRCheckResponse" />
+  <xs:element name="submitKVRCreate" type="tns:submitKVRCreate" />
+  <xs:element name="submitKVRCreateResponse" type="tns:submitKVRCreateResponse" />
+  <xs:element name="submitKVRDelete" type="tns:submitKVRDelete" />
+  <xs:element name="submitKVRDeleteResponse" type="tns:submitKVRDeleteResponse" />
+  <xs:element name="submitKVRRetrieve" type="tns:submitKVRRetrieve" />
+  <xs:element name="submitKVRRetrieveResponse" type="tns:submitKVRRetrieveResponse" />
+  <xs:element name="submitKVRUpdate" type="tns:submitKVRUpdate" />
+  <xs:element name="submitKVRUpdateResponse" type="tns:submitKVRUpdateResponse" />
+  <xs:element name="Exception" type="tns:Exception" />
+  <xs:complexType name="KV_RECEPTAI">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROW">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="RECEPTAS" type="tns:RECEPTAS" />
+            <xs:element minOccurs="0" name="KV_RECEPTO_KLAIDOS" type="tns:KV_RECEPTO_KLAIDOS" />
+            <xs:element minOccurs="0" name="KLAIDA" type="tns:KLAIDA" />
+            <xs:element minOccurs="0" name="ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="KLAIDOS_KODAS" type="xs:string" />
+            <xs:element minOccurs="0" name="KLAIDOS_PRANESIMAS" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RECEPTAS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PADALINYS_IST_ID" type="xs:integer" />
+      <xs:element minOccurs="0" name="ID" type="xs:integer" />
+      <xs:element minOccurs="0" name="TEVINIO_ID" type="xs:integer" />
+      <xs:element minOccurs="0" name="VAISTININKO_SPAUDO_ID" type="xs:integer" />
+      <xs:element minOccurs="0" name="IRASO_DATA" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IRASO_KEITIMO_DATA" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SERIJA" type="xs:string" />
+      <xs:element minOccurs="0" name="NUMERIS" type="xs:integer" />
+      <xs:element minOccurs="0" name="KVREC_TYPE" type="xs:string" />
+      <xs:element minOccurs="0" name="METAI" type="xs:integer" />
+      <xs:element minOccurs="0" name="MENUO" type="xs:integer" />
+      <xs:element minOccurs="0" name="TLK_PAV_ID" type="xs:string" />
+      <xs:element minOccurs="0" name="TLK_KODAS" type="xs:integer" />
+      <xs:element minOccurs="0" name="STATUSAS" type="xs:string" />
+      <xs:element minOccurs="0" name="AKTUALUS" type="xs:string" />
+      <xs:element minOccurs="0" name="IST_VAISTINES_ID" type="xs:integer" />
+      <xs:element minOccurs="0" name="VAISTININKO_SPAUDO_NR" type="xs:string" />
+      <xs:element minOccurs="0" name="GTPL" type="xs:string" />
+      <xs:element minOccurs="0" name="GYDYTOJO_KODAS" type="xs:string" />
+      <xs:element minOccurs="0" name="ISTG_PASPI_ID" type="xs:integer" />
+      <xs:element minOccurs="0" name="VAISTO_ID" type="xs:string" />
+      <xs:element minOccurs="0" name="VAISTO_KIEKIS" type="xs:integer" />
+      <xs:element minOccurs="0" name="PAROS_DOZE" type="xs:decimal" />
+      <xs:element minOccurs="0" name="KOMP_KODAS" type="xs:string" />
+      <xs:element minOccurs="0" name="LIG_KODAS" type="xs:string" />
+      <xs:element minOccurs="0" name="LIGOS_PAAISKINIMAS" type="xs:string" />
+      <xs:element minOccurs="0" name="RECEPTO_ISRASYMO_DATA" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GALIOJIMO_PRADZIA" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GALIOJIMO_PABAIGA" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VAISTO_ISDAVIMO_DATA" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VAISTO_PAKANKA_IKI" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VARTOJIMO_DIENU_SKAICIUS" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PARDAVIMO_SUMA" type="xs:decimal" />
+      <xs:element minOccurs="0" name="KOMPENSUOJAMA_SUMA" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PACIENTO_PRIEMOKA" type="xs:decimal" />
+      <xs:element minOccurs="0" name="APMOKAMA_SUMA" type="xs:decimal" />
+      <xs:element minOccurs="0" name="AAGA_ISAS_NUMERIS" type="xs:string" />
+      <xs:element minOccurs="0" name="ASMENS_KODAS" type="xs:string" />
+      <xs:element minOccurs="0" name="VARDAS" type="xs:string" />
+      <xs:element minOccurs="0" name="PAVARDE" type="xs:string" />
+      <xs:element minOccurs="0" name="GIMIMO_DATA" type="xs:date" />
+      <xs:element minOccurs="0" name="LYTIS" type="xs:string" />
+      <xs:element minOccurs="0" name="ADRESAS" type="xs:string" />
+      <xs:element minOccurs="0" name="DOK_SERIJA_NUMERIS" type="xs:string" />
+      <xs:element minOccurs="0" name="DOKUMENTO_TIPAS" type="xs:string" />
+      <xs:element minOccurs="0" name="VALSTYBE" type="xs:string" />
+      <xs:element minOccurs="0" name="ES_INSTITUCIJA" type="xs:string" />
+      <xs:element minOccurs="0" name="E_FORMOS_NUMERIS" type="xs:string" />
+      <xs:element minOccurs="0" name="ASMENS_IDENTIFIKACINIS_KODAS" type="xs:string" />
+      <xs:element minOccurs="0" name="KOREGAVIMO_PRASYMO_DATA" type="xs:date" />
+      <xs:element minOccurs="0" name="KOREGAVIMO_PRASYMO_NUMERIS" type="xs:string" />
+      <xs:element minOccurs="0" name="KOREGAVIMO_SPRENDIMO_DATA" type="xs:date" />
+      <xs:element minOccurs="0" name="KOREGAVIMO_SPRENDIMO_NUMERIS" type="xs:string" />
+      <xs:element minOccurs="0" name="KAIMO_GYDYTOJO_SPAUDO_NR" type="xs:string" />
+      <xs:element minOccurs="0" name="KAIMO_GYDYTOJO_SPAUDO_ID" type="xs:integer" />
+      <xs:element minOccurs="0" name="KAIMO_PASPI_ID" type="xs:integer" />
+      <xs:element minOccurs="0" name="VIRS_75" type="xs:integer" />
+      <xs:element minOccurs="0" name="ANULIAVIMO_DATA" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TESTINIS_GYDYMAS" type="xs:string" />
+      <xs:element minOccurs="0" name="IRASO_PINIGU_SUMU_VALIUTA" type="xs:string" />
+      <xs:element minOccurs="0" name="PADENG_PRIEMOKA" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PIRMAS_PASKYRIMAS" type="xs:integer" />
+      <xs:element minOccurs="0" name="PPP_LENGVATA" type="xs:integer" />
+      <xs:element minOccurs="0" name="SUKAUPTAS_PACIENTO_KREPSELIS" type="xs:integer" />
+      <xs:element minOccurs="0" name="BR_KODAS" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="KLAIDA">
+    <xs:sequence>
+      <xs:sequence>
+        <xs:element name="ID" type="xs:integer" />
+        <xs:element name="KLAIDOS_KODAS" type="xs:string" />
+        <xs:element name="KLAIDOS_PRANESIMAS" type="xs:string" />
+      </xs:sequence>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="KV_RECEPTO_KLAIDOS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROW">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ID" type="xs:integer" />
+            <xs:element name="REC_ID" type="xs:integer" />
+            <xs:element name="KODAS" type="xs:string" />
+            <xs:element name="PAVADINIMAS" type="xs:string" />
+            <xs:element name="KRITISKUMAS" type="xs:string" />
+            <xs:element name="KRITISKUMAS_MEAN" type="xs:string" />
+            <xs:element name="PASTABOS" type="xs:string" />
+            <xs:element name="APRIBOJIMO_PAVADINIMAS" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="KV_VAISTAI">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROW">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ID" type="xs:integer" />
+            <xs:element name="IRASA_SUKURE" type="xs:string" />
+            <xs:element name="IRASA_KEITE" type="xs:string" />
+            <xs:element name="IRASO_DATA" type="xs:dateTime" />
+            <xs:element name="IRASO_KEITIMO_DATA" type="xs:dateTime" />
+            <xs:element name="PABAIGA" type="xs:date" />
+            <xs:element name="PRADZIA" type="xs:date" />
+            <xs:element name="KVKNV_P_ID" type="xs:integer" />
+            <xs:element name="VAISTO_ID" type="xs:string" />
+            <xs:element name="ATC_KODAS" type="xs:string" />
+            <xs:element name="BENDRINIS_PAVADINIMAS" type="xs:string" />
+            <xs:element name="FIRMINIS_PAVADINIMAS" type="xs:string" />
+            <xs:element name="KIEKIS" type="xs:integer" />
+            <xs:element name="MATAS" type="xs:string" />
+            <xs:element minOccurs="0" name="PAROS_DOZES_MATAS" type="xs:string" />
+            <xs:element name="TIPAS" type="xs:string" />
+            <xs:element minOccurs="0" name="FASUOTE" type="xs:string" />
+            <xs:element minOccurs="0" name="GAMINTOJO_PAVADINIMAS" type="xs:string" />
+            <xs:element minOccurs="0" name="KIEKIO_MATAS" type="xs:string" />
+            <xs:element minOccurs="0" name="PAROS_DOZE" type="xs:decimal" />
+            <xs:element minOccurs="0" name="PASTABOS" type="xs:string" />
+            <xs:element minOccurs="0" name="REGISTRO_NR" type="xs:string" />
+            <xs:element minOccurs="0" name="MILIGRAMO_TV_VIENETO_KIEKIS" type="xs:integer" />
+            <xs:element minOccurs="0" name="TIKRINAMA_V_KIEK" type="xs:integer" />
+            <xs:element minOccurs="0" name="ATC_I_LYGIS" type="xs:integer" />
+            <xs:element minOccurs="0" name="ATC_II_LYGIS" type="xs:integer" />
+            <xs:element minOccurs="0" name="ATC_III_LYGIS" type="xs:integer" />
+            <xs:element minOccurs="0" name="ATC_IV_LYGIS" type="xs:integer" />
+            <xs:element minOccurs="0" name="PVM" type="xs:decimal" />
+            <xs:element minOccurs="0" name="GRUPES_PAVADINIMAS" type="xs:string" />
+            <xs:element minOccurs="0" name="PIGIAUSIAS" type="xs:integer" />
+            <xs:element minOccurs="0" name="KV_VAISTU_LIGOS" type="tns:KV_VAISTU_LIGOS" />
+            <xs:element minOccurs="0" name="KV_VAISTU_KOMP_RUSYS" type="tns:KV_VAISTU_KOMP_RUSYS" />
+            <xs:element minOccurs="0" name="KV_VAISTU_KAINOS" type="tns:KV_VAISTU_KAINOS" />
+            <xs:element minOccurs="0" name="KV_VAISTAS_RIBOJIMAI" type="tns:KV_VAISTAS_RIBOJIMAI" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="KAINYNU_VERSIJOS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROW">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ID" type="xs:integer" />
+            <xs:element name="IRASO_DATA" type="xs:dateTime" />
+            <xs:element name="IRASO_KEITIMO_DATA" type="xs:dateTime" />
+            <xs:element name="IRASA_SUKURE" type="xs:string" />
+            <xs:element name="IRASA_KEITE" type="xs:string" />
+            <xs:element name="PATVIRTINIMO_DATA" type="xs:dateTime" />
+            <xs:element name="PABAIGA" type="xs:dateTime" />
+            <xs:element name="PRADZIA" type="xs:date" />
+            <xs:element name="SUFORMAVIMO_DATA" type="xs:dateTime" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RECEPTAS_CHECK">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:integer" />
+      <xs:element name="GTPL" type="xs:string" />
+      <xs:element name="NUMERIS" type="xs:integer" />
+      <xs:element minOccurs="0" name="KVREC_TYPE" type="xs:string" />
+      <xs:element name="VAISTO_ISDAVIMO_DATA" type="xs:dateTime" />
+      <xs:element name="RECEPTO_ISRASYMO_DATA" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CG_REF_CODES">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROW">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="RV_DOMAIN" type="xs:string" />
+            <xs:element name="RV_LOW_VALUE" type="xs:string" />
+            <xs:element minOccurs="0" name="RV_HIGH_VALUE" type="xs:string" />
+            <xs:element minOccurs="0" name="RV_ABBREVIATION" type="xs:string" />
+            <xs:element minOccurs="0" name="RV_MEANING" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ES_KOMP_INSTITUCIJOS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROW">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="IRASA_SUKURE" type="xs:string" />
+            <xs:element minOccurs="0" name="IRASA_KEITE" type="xs:string" />
+            <xs:element minOccurs="0" name="IRASO_DATA" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="IRASO_KEITIMO_DATA" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="KVEKI_ID" type="xs:string" />
+            <xs:element minOccurs="0" name="COUNTRY_CODE" type="xs:string" />
+            <xs:element minOccurs="0" name="INSTITUTION_NAME1" type="xs:string" />
+            <xs:element minOccurs="0" name="STREET_NUMBER1" type="xs:string" />
+            <xs:element minOccurs="0" name="TOWN1" type="xs:string" />
+            <xs:element minOccurs="0" name="VALIDITY_PERIOD_FROM" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="ACRONYM" type="xs:string" />
+            <xs:element minOccurs="0" name="COMMENTS" type="xs:string" />
+            <xs:element minOccurs="0" name="FAX" type="xs:string" />
+            <xs:element minOccurs="0" name="GROUPING" type="xs:string" />
+            <xs:element minOccurs="0" name="INSTITUTION_NAME2" type="xs:string" />
+            <xs:element minOccurs="0" name="INSTITUTION_NAME3" type="xs:string" />
+            <xs:element minOccurs="0" name="INSTITUTION_NAME4" type="xs:string" />
+            <xs:element minOccurs="0" name="INSTITUTION_NAME5" type="xs:string" />
+            <xs:element minOccurs="0" name="ISSUES_EHIC" type="xs:string" />
+            <xs:element minOccurs="0" name="PCI_ADDRESS" type="xs:string" />
+            <xs:element minOccurs="0" name="PHONE" type="xs:string" />
+            <xs:element minOccurs="0" name="PUBLIC_KEY" type="xs:string" />
+            <xs:element minOccurs="0" name="REASON" type="xs:string" />
+            <xs:element minOccurs="0" name="SED_ADDRESS" type="xs:string" />
+            <xs:element minOccurs="0" name="STREET_NUMBER2" type="xs:string" />
+            <xs:element minOccurs="0" name="STREET_NUMBER3" type="xs:string" />
+            <xs:element minOccurs="0" name="STREET_NUMBER4" type="xs:string" />
+            <xs:element minOccurs="0" name="STREET_NUMBER5" type="xs:string" />
+            <xs:element minOccurs="0" name="TOWN2" type="xs:string" />
+            <xs:element minOccurs="0" name="TOWN3" type="xs:string" />
+            <xs:element minOccurs="0" name="TOWN4" type="xs:string" />
+            <xs:element minOccurs="0" name="TOWN5" type="xs:string" />
+            <xs:element minOccurs="0" name="URL" type="xs:string" />
+            <xs:element minOccurs="0" name="VALIDITY_PERIOD_TO" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="VISITORS_ADRESS" type="xs:string" />
+            <xs:element minOccurs="0" name="ZIP_CODE" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GYDYMO_ISTAIGOS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROW">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="PAV" type="xs:string" />
+            <xs:element minOccurs="0" name="PAV_SVEIDROS_ID" type="xs:string" />
+            <xs:element minOccurs="0" name="ID_TEVO" type="xs:integer" />
+            <xs:element name="SVEIDROS_ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="REJ_KODAS" type="xs:decimal" />
+            <xs:element minOccurs="0" name="ISTG_DATA_NUO" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="ISTG_DATA_IKI" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="MIESTAS" type="xs:string" />
+            <xs:element minOccurs="0" name="GATVE" type="xs:string" />
+            <xs:element minOccurs="0" name="NAMAS" type="xs:string" />
+            <xs:element minOccurs="0" name="PASTABOS" type="xs:string" />
+            <xs:element minOccurs="0" name="ISTG_TLK_ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="IRASO_KEITIMO_DATA" type="xs:dateTime" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GYDYTOJAI">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROW">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="ASM_ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="SPAUDO_NUMERIS" type="xs:string" />
+            <xs:element minOccurs="0" name="L09_VARDAS" type="xs:string" />
+            <xs:element minOccurs="0" name="L10_PAVARDE" type="xs:string" />
+            <xs:element minOccurs="0" name="PAVADINIMAS" type="xs:string" />
+            <xs:element minOccurs="0" name="GALIOJA_NUO" type="xs:date" />
+            <xs:element minOccurs="0" name="GALIOJA_IKI" type="xs:date" />
+            <xs:element name="SPC_ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="SSP_PRF_ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="SSP_BUSENA" type="xs:string" />
+            <xs:element minOccurs="0" name="SSP_BUSENA_MEAN" type="xs:string" />
+            <xs:element minOccurs="0" name="SSP_BUSENOS_DATA" type="xs:date" />
+            <xs:element minOccurs="0" name="IRASO_KEITIMO_DATA" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="PADALINYS_IST_ID" type="xs:integer" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="KOMPENSACIJOS_RUSYS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROW">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="IRASA_SUKURE" type="xs:string" />
+            <xs:element minOccurs="0" name="IRASA_KEITE" type="xs:string" />
+            <xs:element minOccurs="0" name="IRASO_DATA" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="IRASO_KEITIMO_DATA" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="KODAS" type="xs:integer" />
+            <xs:element minOccurs="0" name="PAVADINIMAS" type="xs:string" />
+            <xs:element minOccurs="0" name="PRADZIA" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="PABAIGA" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="PROCENTAS" type="xs:decimal" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="KV_PERIODAI">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="ROW">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="IRASA_SUKURE" type="xs:string" />
+            <xs:element minOccurs="0" name="IRASA_KEITE" type="xs:string" />
+            <xs:element name="IRASO_DATA" type="xs:dateTime" />
+            <xs:element name="IRASO_KEITIMO_DATA" type="xs:dateTime" />
+            <xs:element name="MENUO" type="xs:integer" />
+            <xs:element name="METAI" type="xs:integer" />
+            <xs:element minOccurs="0" name="APMOKAMA_SUMA" type="xs:decimal" />
+            <xs:element minOccurs="0" name="KOMPENSUOJAMA_SUMA" type="xs:decimal" />
+            <xs:element minOccurs="0" name="PARDAVIMO_SUMA" type="xs:decimal" />
+            <xs:element minOccurs="0" name="PACIENTO_PRIEMOKA" type="xs:decimal" />
+            <xs:element minOccurs="0" name="PADENG_PRIEMOKA" type="xs:decimal" />
+            <xs:element minOccurs="0" name="PATVIRTINTI_RECEPTAI" type="xs:integer" />
+            <xs:element minOccurs="0" name="RECEPTAI_SU_KLAIDOMIS" type="xs:integer" />
+            <xs:element minOccurs="0" name="RECEPTAI_SU_PRANESIMAIS" type="xs:integer" />
+            <xs:element minOccurs="0" name="VISI_RECEPTAI" type="xs:integer" />
+            <xs:element name="STATUSAS" type="xs:string" />
+            <xs:element name="TLK_PAV_ID" type="xs:string" />
+            <xs:element minOccurs="0" name="TLK_KODAS" type="xs:integer" />
+            <xs:element minOccurs="0" name="PAV_SVEIDROS_ID" type="xs:string" />
+            <xs:element minOccurs="0" name="IRASO_PINIGU_SUMU_VALIUTA" type="xs:string" />
+            <xs:element minOccurs="0" name="KV_PERIODO_KLAIDOS" type="tns:KV_PERIODO_KLAIDOS" />
+            <xs:element minOccurs="0" name="PADENG_PRIEMOKA_ISIMTIS" type="xs:decimal" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="KV_PERIODO_KLAIDOS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROW">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ID" type="xs:integer" />
+            <xs:element name="PRD_ID" type="xs:integer" />
+            <xs:element name="KODAS" type="xs:string" />
+            <xs:element name="PAVADINIMAS" type="xs:string" />
+            <xs:element name="KRITISKUMAS" type="xs:string" />
+            <xs:element minOccurs="0" name="KRITISKUMAS_MEAN" type="xs:string" />
+            <xs:element minOccurs="0" name="PASTABOS" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="KV_VAISTAS_RIBOJIMAI">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KV_VAISTAS_RIBOJIMAI_ROW">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ID" type="xs:integer" />
+            <xs:element name="IRASA_SUKURE" type="xs:string" />
+            <xs:element name="IRASA_KEITE" type="xs:string" />
+            <xs:element name="IRASO_DATA" type="xs:dateTime" />
+            <xs:element name="IRASO_KEITIMO_DATA" type="xs:dateTime" />
+            <xs:element name="KVKNE_P_ID" type="xs:integer" />
+            <xs:element name="PRADZIA" type="xs:date" />
+            <xs:element minOccurs="0" name="PABAIGA" type="xs:date" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="KV_VAISTU_KAINOS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KV_VAISTU_KAINOS_ROW">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ID" type="xs:integer" />
+            <xs:element name="IRASA_SUKURE" type="xs:string" />
+            <xs:element name="IRASA_KEITE" type="xs:string" />
+            <xs:element name="IRASO_DATA" type="xs:dateTime" />
+            <xs:element name="IRASO_KEITIMO_DATA" type="xs:dateTime" />
+            <xs:element name="KVKNE_P_ID" type="xs:integer" />
+            <xs:element name="BAZINE_KAINA" type="xs:decimal" />
+            <xs:element name="DEKLARUOTA_KAINA" type="xs:decimal" />
+            <xs:element name="KOMPENSUOJAMA_SUMA" type="xs:decimal" />
+            <xs:element name="MAZMENINE_KAINA" type="xs:decimal" />
+            <xs:element minOccurs="0" name="PADENG_PRIEMOKA" type="xs:decimal" />
+            <xs:element name="PRADZIA" type="xs:date" />
+            <xs:element minOccurs="0" name="PABAIGA" type="xs:date" />
+            <xs:element minOccurs="0" name="PRIEMOKA" type="xs:decimal" />
+            <xs:element minOccurs="0" name="PROCENTAS" type="xs:decimal" />
+            <xs:element minOccurs="0" name="IRASO_PINIGU_SUMU_VALIUTA" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="KV_VAISTU_KOMP_RUSYS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KV_VAISTU_KOMP_RUSYS_ROW">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ID" type="xs:integer" />
+            <xs:element name="IRASA_SUKURE" type="xs:string" />
+            <xs:element name="IRASA_KEITE" type="xs:string" />
+            <xs:element name="IRASO_DATA" type="xs:dateTime" />
+            <xs:element name="IRASO_KEITIMO_DATA" type="xs:dateTime" />
+            <xs:element name="KVKNE_P_ID" type="xs:integer" />
+            <xs:element name="KODAS" type="xs:string" />
+            <xs:element name="PAVADINIMAS" type="xs:string" />
+            <xs:element name="PRADZIA" type="xs:date" />
+            <xs:element minOccurs="0" name="PABAIGA" type="xs:date" />
+            <xs:element minOccurs="0" name="PROCENTAS" type="xs:decimal" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="KV_VAISTU_LIGOS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KV_VAISTU_LIGOS_ROW">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ID" type="xs:integer" />
+            <xs:element name="IRASA_SUKURE" type="xs:string" />
+            <xs:element name="IRASA_KEITE" type="xs:string" />
+            <xs:element name="IRASO_DATA" type="xs:dateTime" />
+            <xs:element name="IRASO_KEITIMO_DATA" type="xs:dateTime" />
+            <xs:element name="KVKNE_P_ID" type="xs:integer" />
+            <xs:element name="KODAS" type="xs:string" />
+            <xs:element name="PAVADINIMAS" type="xs:string" />
+            <xs:element name="PRADZIA" type="xs:date" />
+            <xs:element minOccurs="0" name="PABAIGA" type="xs:date" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LIGOS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROW">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="IRASA_SUKURE" type="xs:string" />
+            <xs:element minOccurs="0" name="IRASA_KEITE" type="xs:string" />
+            <xs:element minOccurs="0" name="IRASO_DATA" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="IRASO_KEITIMO_DATA" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="KODAS" type="xs:string" />
+            <xs:element minOccurs="0" name="PAVADINIMAS" type="xs:string" />
+            <xs:element minOccurs="0" name="LIG_ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="O" type="xs:integer" />
+            <xs:element minOccurs="0" name="AM" type="xs:integer" />
+            <xs:element minOccurs="0" name="GALIMA_PASIRINKTI" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UKIAI">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROW">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="PAV" type="xs:string" />
+            <xs:element minOccurs="0" name="PAV_SVEIDROS_ID" type="xs:string" />
+            <xs:element minOccurs="0" name="ID_TEVO" type="xs:integer" />
+            <xs:element name="SVEIDROS_ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="REJ_KODAS" type="xs:decimal" />
+            <xs:element minOccurs="0" name="ISTG_DATA_NUO" type="xs:date" />
+            <xs:element minOccurs="0" name="ISTG_DATA_IKI" type="xs:date" />
+            <xs:element minOccurs="0" name="MIESTAS" type="xs:string" />
+            <xs:element minOccurs="0" name="GATVE" type="xs:string" />
+            <xs:element minOccurs="0" name="NAMAS" type="xs:string" />
+            <xs:element minOccurs="0" name="PASTABOS" type="xs:string" />
+            <xs:element minOccurs="0" name="ISTG_TLK_ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="IRASO_KEITIMO_DATA" type="xs:dateTime" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OPTIKOS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROW">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="PAV" type="xs:string" />
+            <xs:element minOccurs="0" name="PAV_SVEIDROS_ID" type="xs:string" />
+            <xs:element minOccurs="0" name="ID_TEVO" type="xs:integer" />
+            <xs:element name="SVEIDROS_ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="REJ_KODAS" type="xs:decimal" />
+            <xs:element minOccurs="0" name="ISTG_DATA_NUO" type="xs:date" />
+            <xs:element minOccurs="0" name="ISTG_DATA_IKI" type="xs:date" />
+            <xs:element minOccurs="0" name="MIESTAS" type="xs:string" />
+            <xs:element minOccurs="0" name="GATVE" type="xs:string" />
+            <xs:element minOccurs="0" name="NAMAS" type="xs:string" />
+            <xs:element minOccurs="0" name="PASTABOS" type="xs:string" />
+            <xs:element minOccurs="0" name="ISTG_TLK_ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="IRASO_KEITIMO_DATA" type="xs:dateTime" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TIKRINIMO_TAISYKLES">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROW">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="IRASA_SUKURE" type="xs:string" />
+            <xs:element minOccurs="0" name="IRASA_KEITE" type="xs:string" />
+            <xs:element minOccurs="0" name="IRASO_DATA" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="IRASO_KEITIMO_DATA" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="ELEMENTO_TIPAS" type="xs:string" />
+            <xs:element minOccurs="0" name="KODAS" type="xs:string" />
+            <xs:element minOccurs="0" name="KRITISKUMAS" type="xs:string" />
+            <xs:element minOccurs="0" name="NR" type="xs:decimal" />
+            <xs:element minOccurs="0" name="PAVADINIMAS" type="xs:string" />
+            <xs:element minOccurs="0" name="PASTABOS" type="xs:string" />
+            <xs:element minOccurs="0" name="SISTEMINE" type="xs:integer" />
+            <xs:element minOccurs="0" name="APRIBOJIMO_PAVADINIMAS" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VAISTINES">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROW">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="PAV" type="xs:string" />
+            <xs:element minOccurs="0" name="PAV_SVEIDROS_ID" type="xs:string" />
+            <xs:element minOccurs="0" name="ID_TEVO" type="xs:integer" />
+            <xs:element name="SVEIDROS_ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="REJ_KODAS" type="xs:decimal" />
+            <xs:element minOccurs="0" name="ISTG_DATA_NUO" type="xs:date" />
+            <xs:element minOccurs="0" name="ISTG_DATA_IKI" type="xs:date" />
+            <xs:element minOccurs="0" name="MIESTAS" type="xs:string" />
+            <xs:element minOccurs="0" name="GATVE" type="xs:string" />
+            <xs:element minOccurs="0" name="NAMAS" type="xs:string" />
+            <xs:element minOccurs="0" name="PASTABOS" type="xs:string" />
+            <xs:element minOccurs="0" name="ISTG_TLK_ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="IRASO_KEITIMO_DATA" type="xs:dateTime" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VAISTININKAI">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROW">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="ASM_ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="SPAUDO_NUMERIS" type="xs:string" />
+            <xs:element minOccurs="0" name="L09_VARDAS" type="xs:string" />
+            <xs:element minOccurs="0" name="L10_PAVARDE" type="xs:string" />
+            <xs:element minOccurs="0" name="PAVADINIMAS" type="xs:string" />
+            <xs:element minOccurs="0" name="GALIOJA_NUO" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="GALIOJA_IKI" type="xs:dateTime" />
+            <xs:element name="SPC_ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="SSP_PRF_ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="SSP_BUSENA" type="xs:string" />
+            <xs:element minOccurs="0" name="SSP_BUSENA_MEAN" type="xs:string" />
+            <xs:element minOccurs="0" name="SSP_BUSENOS_DATA" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="IRASO_KEITIMO_DATA" type="xs:dateTime" />
+            <xs:element minOccurs="0" name="PADALINYS_IST_ID" type="xs:integer" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SPSTPL_DETAILS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROW">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="SPAUDO_NUMERIS" type="xs:string" />
+            <xs:element minOccurs="0" name="PAVARDE" type="xs:string" />
+            <xs:element minOccurs="0" name="VARDAS" type="xs:string" />
+            <xs:element minOccurs="0" name="SVEIDRA_ID" type="xs:integer" />
+            <xs:element minOccurs="0" name="JAR_KODAS" type="xs:integer" />
+            <xs:element minOccurs="0" name="ASPI_PAVADINIMAS" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="submitKVRCreate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GET_SUBMITKVRCREATE">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="KV_RECEPTAS">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID" type="xs:integer" />
+                  <xs:element name="PADALINYS_IST_ID" type="xs:integer" />
+                  <xs:element minOccurs="0" name="VAISTININKO_SPAUDO_ID" type="xs:integer" />
+                  <xs:element minOccurs="0" name="SERIJA" type="xs:string" />
+                  <xs:element name="NUMERIS" type="xs:integer" />
+                  <xs:element name="KVREC_TYPE" type="xs:string" />
+                  <xs:element minOccurs="0" name="GTPL" type="xs:string" />
+                  <xs:element minOccurs="0" name="GYDYTOJO_KODAS" type="xs:string" />
+                  <xs:element minOccurs="0" name="ISTG_PASPI_ID" type="xs:integer" />
+                  <xs:element name="VAISTO_ID" type="xs:string" />
+                  <xs:element name="VAISTO_KIEKIS" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="PAROS_DOZE" type="xs:decimal" />
+                  <xs:element name="KOMP_KODAS" type="xs:string" />
+                  <xs:element minOccurs="0" name="LIG_KODAS" type="xs:string" />
+                  <xs:element minOccurs="0" name="LIGOS_PAAISKINIMAS" type="xs:string" />
+                  <xs:element name="RECEPTO_ISRASYMO_DATA" type="xs:dateTime" />
+                  <xs:element name="GALIOJIMO_PRADZIA" type="xs:dateTime" />
+                  <xs:element name="GALIOJIMO_PABAIGA" type="xs:dateTime" />
+                  <xs:element name="VAISTO_ISDAVIMO_DATA" type="xs:dateTime" />
+                  <xs:element name="VAISTO_PAKANKA_IKI" type="xs:dateTime" />
+                  <xs:element name="VARTOJIMO_DIENU_SKAICIUS" type="xs:decimal" />
+                  <xs:element name="PARDAVIMO_SUMA" type="xs:decimal" />
+                  <xs:element name="KOMPENSUOJAMA_SUMA" type="xs:decimal" />
+                  <xs:element name="PACIENTO_PRIEMOKA" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="AAGA_ISAS_NUMERIS" type="xs:string" />
+                  <xs:element minOccurs="0" name="ASMENS_KODAS" type="xs:string" />
+                  <xs:element minOccurs="0" name="VARDAS" type="xs:string" />
+                  <xs:element minOccurs="0" name="PAVARDE" type="xs:string" />
+                  <xs:element minOccurs="0" name="GIMIMO_DATA" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="LYTIS" type="xs:string" />
+                  <xs:element minOccurs="0" name="ADRESAS" type="xs:string" />
+                  <xs:element minOccurs="0" name="VALSTYBE" type="xs:string" />
+                  <xs:element minOccurs="0" name="ES_INSTITUCIJA" type="xs:string" />
+                  <xs:element minOccurs="0" name="E_FORMOS_NUMERIS" type="xs:string" />
+                  <xs:element minOccurs="0" name="ASMENS_IDENTIFIKACINIS_KODAS" type="xs:string" />
+                  <xs:element minOccurs="0" name="KAIMO_GYDYTOJO_SPAUDO_ID" type="xs:integer" />
+                  <xs:element minOccurs="0" name="KAIMO_PASPI_ID" type="xs:integer" />
+                  <xs:element minOccurs="0" name="ANULIAVIMO_DATA" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="TESTINIS_GYDYMAS" type="xs:string" />
+                  <xs:element minOccurs="0" name="IRASO_PINIGU_SUMU_VALIUTA" type="xs:string" />
+                  <xs:element minOccurs="0" name="PADENG_PRIEMOKA" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="PPP_LENGVATA" type="xs:integer" />
+                  <xs:element minOccurs="0" name="SUKAUPTAS_PACIENTO_KREPSELIS" type="xs:integer" />
+                  <xs:element minOccurs="0" name="BR_KODAS" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Exception">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPeriodas">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GET_PERIODAILIST">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="KV_PERIODAS">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="METAI" type="xs:integer" />
+                  <xs:element name="MENUO" type="xs:integer" />
+                  <xs:element minOccurs="0" name="PADALINYS_IST_ID" type="xs:integer" />
+                  <xs:element minOccurs="0" name="TLK_KODAS" type="xs:integer" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="submitKVRRetrieve">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GET_SUBMITKVRRETRIEVE">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="KV_RECEPTAS">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID" type="xs:integer" />
+                  <xs:element minOccurs="0" name="GTPL" type="xs:string" />
+                  <xs:element minOccurs="0" name="NUMERIS" type="xs:integer" />
+                  <xs:element minOccurs="0" name="KVREC_TYPE" type="xs:string" />
+                  <xs:element minOccurs="0" name="VAISTO_ISDAVIMO_DATA" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="RECEPTO_ISRASYMO_DATA" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getKainynoVersijaList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GET_KAINYNO_VERSIJALIST">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="KAINYNO_VERSIJA">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="DATA_NUO" type="xs:dateTime" />
+                  <xs:element name="DATA_IKI" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGydytojasList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GET_GYDYTOJASLIST">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="GYDYTOJAS">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="PADALINYS_IST_ID" type="xs:integer" />
+                  <xs:element name="DATA_NUO" type="xs:dateTime" />
+                  <xs:element name="DATA_IKI" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="submitKVRUpdate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GET_SUBMITKVRUPDATE">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="KV_RECEPTAS">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="PADALINYS_IST_ID" type="xs:integer" />
+                  <xs:element name="ID" type="xs:integer" />
+                  <xs:element minOccurs="0" name="VAISTININKO_SPAUDO_ID" type="xs:integer" />
+                  <xs:element minOccurs="0" name="SERIJA" type="xs:string" />
+                  <xs:element minOccurs="0" name="NUMERIS" type="xs:integer" />
+                  <xs:element minOccurs="0" name="KVREC_TYPE" type="xs:string" />
+                  <xs:element minOccurs="0" name="GTPL" type="xs:string" />
+                  <xs:element minOccurs="0" name="GYDYTOJO_KODAS" type="xs:string" />
+                  <xs:element minOccurs="0" name="ISTG_PASPI_ID" type="xs:integer" />
+                  <xs:element minOccurs="0" name="VAISTO_ID" type="xs:string" />
+                  <xs:element minOccurs="0" name="VAISTO_KIEKIS" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="PAROS_DOZE" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="KOMP_KODAS" type="xs:string" />
+                  <xs:element minOccurs="0" name="LIG_KODAS" type="xs:string" />
+                  <xs:element minOccurs="0" name="LIGOS_PAAISKINIMAS" type="xs:string" />
+                  <xs:element minOccurs="0" name="RECEPTO_ISRASYMO_DATA" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="GALIOJIMO_PRADZIA" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="GALIOJIMO_PABAIGA" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="VAISTO_ISDAVIMO_DATA" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="VAISTO_PAKANKA_IKI" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="VARTOJIMO_DIENU_SKAICIUS" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="PARDAVIMO_SUMA" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="KOMPENSUOJAMA_SUMA" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="PACIENTO_PRIEMOKA" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="AAGA_ISAS_NUMERIS" type="xs:string" />
+                  <xs:element minOccurs="0" name="ASMENS_KODAS" type="xs:string" />
+                  <xs:element minOccurs="0" name="VARDAS" type="xs:string" />
+                  <xs:element minOccurs="0" name="PAVARDE" type="xs:string" />
+                  <xs:element minOccurs="0" name="GIMIMO_DATA" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="LYTIS" type="xs:string" />
+                  <xs:element minOccurs="0" name="ADRESAS" type="xs:string" />
+                  <xs:element minOccurs="0" name="VALSTYBE" type="xs:string" />
+                  <xs:element minOccurs="0" name="ES_INSTITUCIJA" type="xs:string" />
+                  <xs:element minOccurs="0" name="E_FORMOS_NUMERIS" type="xs:string" />
+                  <xs:element minOccurs="0" name="ASMENS_IDENTIFIKACINIS_KODAS" type="xs:string" />
+                  <xs:element minOccurs="0" name="KAIMO_GYDYTOJO_SPAUDO_ID" type="xs:integer" />
+                  <xs:element minOccurs="0" name="KAIMO_PASPI_ID" type="xs:integer" />
+                  <xs:element minOccurs="0" name="TESTINIS_GYDYMAS" type="xs:string" />
+                  <xs:element minOccurs="0" name="IRASO_PINIGU_SUMU_VALIUTA" type="xs:string" />
+                  <xs:element minOccurs="0" name="PADENG_PRIEMOKA" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="PPP_LENGVATA" type="xs:integer" />
+                  <xs:element minOccurs="0" name="SUKAUPTAS_PACIENTO_KREPSELIS" type="xs:integer" />
+                  <xs:element minOccurs="0" name="BR_KODAS" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getKlaidaList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GET_KLAIDALIST">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="TIKRINIMO_TAISYKLE">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="DATA_NUO" type="xs:dateTime" />
+                  <xs:element name="DATA_IKI" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getEsInstList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GET_INSTLIST">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ES_KOMP_INSTITUCIJA">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="DATA_NUO" type="xs:dateTime" />
+                  <xs:element name="DATA_IKI" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getGydIstaigaList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GET_GYDISTAIGALIST">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="GYDYMO_ISTAIGA">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="DATA_NUO" type="xs:dateTime" />
+                  <xs:element name="DATA_IKI" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getKVRList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GET_KVRLIST">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="KV_RECEPTAS">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="PADALINYS_IST_ID" type="xs:integer" />
+                  <xs:element minOccurs="0" name="STATUSAS" type="xs:string" />
+                  <xs:element name="METAI" type="xs:integer" />
+                  <xs:element name="MENUO" type="xs:integer" />
+                  <xs:element minOccurs="0" name="TLK_KODAS" type="xs:integer" />
+                  <xs:element minOccurs="0" name="KEITIMO_DATA_NUO" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="KEITIMO_DATA_IKI" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="KOREGUOJAMAS" type="xs:integer" />
+                  <xs:element minOccurs="0" name="REC_ID" type="xs:integer" />
+                  <xs:element minOccurs="0" name="KVPRD_ID" type="xs:integer" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getOptikaList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GET_OPTIKALIST">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="OPTIKA">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="DATA_NUO" type="xs:dateTime" />
+                  <xs:element name="DATA_IKI" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUkioSubjektaiList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GET_UKIOSUBJEKTAILIST">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="UKIS">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="DATA_NUO" type="xs:dateTime" />
+                  <xs:element name="DATA_IKI" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="submitKVRCheck">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GET_SUBMITKVRCHECK">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="KV_RECEPTAS">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="NUMERIS" type="xs:integer" />
+                  <xs:element name="GTPL" type="xs:string" />
+                  <xs:element minOccurs="0" name="VAISTO_ISDAVIMO_DATA" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="RECEPTO_ISRASYMO_DATA" type="xs:dateTime" />
+                  <xs:element name="ID" type="xs:integer" />
+                  <xs:element name="KVREC_TYPE" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getZinynoReiksmeList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GET_ZINYNO_REIKSMELIST">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="CG_REF_CODES">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="RV_DOMAIN" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="submitKVRDelete">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GET_SUBMITKVRDELETE">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="KV_RECEPTAS">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID" type="xs:integer" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getKompRusisList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GET_KOMPRUSISLIST">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="KOMPENSACIJOS_RUSIS">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="DATA_NUO" type="xs:dateTime" />
+                  <xs:element name="DATA_IKI" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getVaistineList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GET_VAISTINELIST">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="VAISTINE">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="DATA_NUO" type="xs:dateTime" />
+                  <xs:element name="DATA_IKI" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getVaistininkasList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GET_VAISTININKASLIST">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="VAISTININKAS">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="PADALINYS_IST_ID" type="xs:integer" />
+                  <xs:element name="DATA_NUO" type="xs:dateTime" />
+                  <xs:element name="DATA_IKI" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getVaistasList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GET_VAISTASLIST">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="KV_KAINYNO_VERSIJA">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID" type="xs:integer" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMPPList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GET_MPPLIST">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="KV_KAINYNO_VERSIJA">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID" type="xs:integer" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getLigaList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GET_LIGALIST">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="LIGA">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="DATA_NUO" type="xs:dateTime" />
+                  <xs:element name="DATA_IKI" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getSPSTPLDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SPSTPL" type="xs:integer" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

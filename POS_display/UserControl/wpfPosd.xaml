@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="POS_display.wpfPosd"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POS_display"
+             mc:Ignorable="d" 
+             d:DesignHeight="1024" d:DesignWidth="1280">
+    <Grid>
+        <Label x:Name="lblTotalInfo" Content="Viso mokėti" HorizontalAlignment="Right" Margin="0,686,320,0" VerticalAlignment="Top" Background="Transparent" Foreground="#FF002664" FontFamily="Microsoft Sans Serif" FontSize="26" FontWeight="Bold"/>
+        <Label x:Name="lblInfo" Content="" HorizontalAlignment="Right" Margin="0,740,320,0" VerticalAlignment="Top" Background="Transparent" Foreground="#FF002664" FontFamily="Microsoft Sans Serif" FontSize="20" FontWeight="Bold" Height="101" TextBlock.TextAlignment="Right"/>
+        <Label x:Name="lblTotalValue" Content="" HorizontalAlignment="Right" Margin="0,686,100,0" VerticalAlignment="Top" Background="Transparent" Foreground="#FF002664" FontFamily="Microsoft Sans Serif" FontSize="26" RenderTransformOrigin="0.644,0.38" TextBlock.TextAlignment="Left"/>
+        <Label x:Name="lblValue" Content="" HorizontalAlignment="Right" Margin="0,740,100,0" VerticalAlignment="Top" Background="Transparent" Foreground="#FF002664" FontFamily="Microsoft Sans Serif" FontSize="20" RenderTransformOrigin="0.644,0.38" Height="101" TextBlock.TextAlignment="Left"/>
+        <Image x:Name="imgAd" HorizontalAlignment="Left" Height="200" Margin="43,701,0,0" VerticalAlignment="Top" Width="664"/>
+        <Image x:Name="imgCard" HorizontalAlignment="Right" Height="175" Margin="963,846,100,0" VerticalAlignment="Top" Width="244"/>
+        <DataGrid x:Name="gvPosd" HorizontalAlignment="Stretch" Height="497" Margin="43,173,75,0" VerticalAlignment="Top" Background="Transparent" RowBackground="Transparent" BorderBrush="Transparent" VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="#FF002664" Foreground="#FF002664" ItemsSource="{Binding}" AutoGenerateColumns="False" IsReadOnly="True" RowHeight="50" VerticalScrollBarVisibility="Disabled">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding barcodename}" Width="*" FontFamily="Microsoft Sans Serif" FontSize="22" Foreground="#FF002664">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap" />
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                            <Setter Property="Padding" Value="0,0,5,0" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding qty}" Header="Kiekis" IsReadOnly="True" FontFamily="Microsoft Sans Serif" FontSize="22" Foreground="#FF002664">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding price}" Header="Kaina" IsReadOnly="True" FontFamily="Microsoft Sans Serif" FontSize="22" Foreground="#FF002664">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding discount_sum}" Header="Nuolaida" IsReadOnly="True" FontFamily="Microsoft Sans Serif" FontSize="22" Foreground="#FF002664">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding sum}" Header="Suma" IsReadOnly="True" FontFamily="Microsoft Sans Serif" FontSize="22" Foreground="#FF002664">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding cheque_sum}" Header="GSK" IsReadOnly="True" FontFamily="Microsoft Sans Serif" FontSize="22" Foreground="#FF002664">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding cheque_sum_insurance}" Header="Draud." IsReadOnly="True" FontFamily="Microsoft Sans Serif" FontSize="22" Foreground="#FF002664">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="FontFamily" Value="Microsoft Sans Serif"/>
+                    <Setter Property="FontSize" Value="26"/>
+                    <Setter Property="Foreground" Value="#FF002664"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Padding" Value="0,0,20,0"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.RowHeaderStyle>
+                <Style TargetType="{x:Type DataGridRowHeader}">
+                    <Setter Property="Background" Value="Transparent" />
+                </Style>
+            </DataGrid.RowHeaderStyle>
+        </DataGrid>
+        <Separator x:Name="sep1" HorizontalAlignment="Right" Height="16" Margin="0,670,100,0" VerticalAlignment="Top" Width="397" Foreground="#FF58A618"/>
+        <Separator x:Name="sep2" HorizontalAlignment="Right" Height="16" Margin="0,725,100,0" VerticalAlignment="Top" Width="397" Foreground="#FF58A618"/>
+    </Grid>
+</UserControl>

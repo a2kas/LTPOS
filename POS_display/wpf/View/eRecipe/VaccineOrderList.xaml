@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="POS_display.wpf.View.VaccineEntriesList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POS_display.wpf.View"
+             xmlns:wpf="clr-namespace:POS_display.wpf"
+             xmlns:POS_display="clr-namespace:POS_display"
+             mc:Ignorable="d" 
+             d:DesignHeight="179" d:DesignWidth="571">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <wpf:BusyToCursorConverter x:Key="BusyToCursorConverter"/>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../style/defaultStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <UserControl.Cursor>
+        <Binding Path="DataContext.IsBusy" RelativeSource="{RelativeSource Self}" Converter="{StaticResource BusyToCursorConverter}"/>
+    </UserControl.Cursor>
+    <Grid>
+        <DataGrid x:Name="dataGrid">
+            <DataGrid.Resources>
+                <wpf:DateFormat x:Key="DateFormat"/>
+                <wpf:TypeFormat x:Key="TypeFormat"/>
+                <wpf:ERecipeGenericNameFormat x:Key="ERecipeGenericNameFormat"/>
+                <Style TargetType="{x:Type DataGrid}" BasedOn="{StaticResource defaultDataGrid}">
+                    <EventSetter Event="Selector.SelectionChanged" Handler="dataGrid_SelectionChanged" />
+                    <Setter Property="ItemsSource" Value="{Binding VaccineEntries}"/>
+                </Style>
+                <Style TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource {x:Type DataGridCell}}">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Self}, Path=Foreground}" />
+                            <Setter Property="Background" Value="#FFC7BDBD" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Setter Property="Height" Value="Auto"/>
+                    <Setter Property="MinHeight" Value="25"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding OrderStatus}" Value="Accepted">
+                            <Setter Property="Foreground" Value="Green"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding OrderStatus}" Value="Cancelled">
+                            <Setter Property="Foreground" Value="Red"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding OrderStatus}" Value="Aborted">
+                            <Setter Property="Foreground" Value="Red"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding OrderStatus}" Value="Complete">
+                            <Setter Property="Foreground" Value="Black"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Prescription.ImmunizationRecommendation.InfectiousDiseaseDisplay}" x:Name="DiseaseName" Header="Pavadinimas" MinWidth="{Binding Path=ActualWidth, ElementName=DiseaseName }" MaxWidth="290" Width="*" />
+                <DataGridTextColumn Binding="{Binding Prescription.ImmunizationRecommendation.DoseNumber}" x:Name="DoseNumber" Header="Dozė" MinWidth="{Binding Path=ActualWidth, ElementName=DoseNumber }"  />
+                <DataGridTextColumn Binding="{Binding Prescription.ImmunizationRecommendation.VaccineName}" x:Name="VaccineName" Header="Imuninis vaistinis preparatas" MinWidth="{Binding Path=ActualWidth, ElementName=VaccineName }" />
+                <DataGridTextColumn Binding="{Binding Prescription.DateDisplay}" x:Name="Date" Header="Data" MinWidth="{Binding Path=ActualWidth, ElementName=Date }" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

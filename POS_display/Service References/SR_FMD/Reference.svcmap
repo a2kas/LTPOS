@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2225a35a-e25c-4ebd-abd2-1290f6d711f6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://appserv.phoenix.loc:8083/ServiceFMD.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServiceFMD.disco" MetadataType="Disco" ID="e77f5848-910c-4702-bacd-b6597f610864" SourceId="1" SourceUrl="http://appserv.phoenix.loc:8083/ServiceFMD.svc?disco" />
+    <MetadataFile FileName="ServiceFMD.xsd" MetadataType="Schema" ID="ac4b893d-2d94-4fb4-a17f-800ece80b089" SourceId="1" SourceUrl="http://appserv.phoenix.loc:8083/ServiceFMD.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServiceFMD.wsdl" MetadataType="Wsdl" ID="a16a580d-6a04-4065-b277-34e93a467c39" SourceId="1" SourceUrl="http://appserv.phoenix.loc:8083/ServiceFMD.svc?wsdl" />
+    <MetadataFile FileName="ServiceFMD1.xsd" MetadataType="Schema" ID="16cdfb2b-9ece-489d-b5d1-62a733701b20" SourceId="1" SourceUrl="http://appserv.phoenix.loc:8083/ServiceFMD.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServiceFMD2.xsd" MetadataType="Schema" ID="84e9212c-0898-4673-b5e1-03a9098c2512" SourceId="1" SourceUrl="http://appserv.phoenix.loc:8083/ServiceFMD.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

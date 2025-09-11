@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="POS_display.wpf.View.wpfeRecipePdf"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POS_display" xmlns:eRecipe="clr-namespace:POS_display.Items.eRecipe" x:Name="uc"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Height="639" Width="410" Background="White" FontFamily="Calibri" HorizontalAlignment="Stretch" FontSize="13">
+    <Grid x:Name="grRecipe" Margin="5">
+        <Grid.DataContext>
+            <eRecipe:Recipe/>
+        </Grid.DataContext>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="85" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="tbHeader" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap" TextAlignment="Center">
+            <Run Text="Elektroninis receptas Nr." />
+            <Run Text="{Binding Path=eRecipe_RecipeNumber}"/>
+            <LineBreak />
+            <Run Text="" Name="txtWrittenDate" FontSize="11 px"/>
+        </TextBlock>
+        <TextBlock x:Name="tbInfo" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap"/>
+        <Separator x:Name="sep1" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="tbRecipeHeader" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap" TextAlignment="Center" FontSize="14"/>
+        <TextBlock Text="Diagnozė" Grid.Row="4" Grid.Column="0" FontSize="14"/>
+        <TextBlock x:Name="tbDiagnosis" Text="{Binding Diagnosis}" Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" FontSize="14"/>
+        <TextBlock Text="Kompensacija" Grid.Row="5" Grid.Column="0" FontSize="14"/>
+        <TextBlock x:Name="tbCompensation" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" FontSize="14">
+            <Run Name="txtCompensationCode" Text="{Binding eRecipe.CompensationCode}" FontWeight="Bold"/>
+            <Run Text="{Binding eRecipe.CompensationName}" FontWeight="Bold"/>
+        </TextBlock>
+        <TextBlock Text="Žymos" Grid.Row="6" Grid.Column="0" FontSize="14"/>
+        <TextBlock x:Name="tbMark" Grid.Row="6" Grid.Column="1" TextWrapping="Wrap" FontSize="14"/>
+        <TextBlock Text="Rp." Grid.Row="7" Grid.Column="0" FontSize="14"/>
+        <TextBlock x:Name="tbRp" Grid.Row="7" Grid.Column="1" TextWrapping="Wrap" FontSize="14"/>
+        <TextBlock Text="D.S." Grid.Row="8" Grid.Column="0" FontSize="14"/>
+        <TextBlock x:Name="tbDS" Grid.Row="8" Grid.Column="1" TextWrapping="Wrap" FontSize="14"/>
+        <Separator x:Name="sep2" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="tbDispenseTitle" Text="Išdavimų informacija" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" FontSize="14" FontWeight="Bold"  TextAlignment="Center"/>
+        <TextBlock Text="Liko išduoti" Grid.Row="11" Grid.Column="0" FontSize="14"/>
+        <TextBlock x:Name="tbLeftDispense" Grid.Row="11" Grid.Column="1" TextWrapping="Wrap" FontSize="14"/>
+        <TextBlock x:Name="tbDispensed" Text="Išduotas kiekis:" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" FontSize="14"/>
+        <TextBlock x:Name="tbDurationOfUse" Text="Vartojimo trukmė:" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" FontSize="14"/>
+        <TextBlock x:Name="tbUntilDate" Text="Paskutinio išdavimo pakanka iki data:" Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2" FontSize="14"/>
+        <Separator x:Name="sep3" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="tbPatientInfo" Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap" FontSize="14">
+            <Run Text="Informacija pacientui:"/>
+        </TextBlock>
+        <TextBlock x:Name="tbPharmacistInfo" Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap" FontSize="14">
+            <Run Text="Informacija farmacijos specialistui:"/>
+        </TextBlock>
+        <TextBlock x:Name="tbRecipeLockInfo" Grid.Row="18" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap" FontSize="14">
+            <Run Text="Receptas užrakintas nuo:"/>
+        </TextBlock>
+    </Grid>
+</UserControl>

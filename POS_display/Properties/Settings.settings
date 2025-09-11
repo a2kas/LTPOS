@@ -1,0 +1,81 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="POS_display.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Pagalba" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="grid_page_size" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">23</Value>
+    </Setting>
+    <Setting Name="TimerSystemUpdate" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">900</Value>
+    </Setting>
+    <Setting Name="KVP_server" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://kvap.vlk.lt/KvapWs/KvapWebService</Value>
+    </Setting>
+    <Setting Name="eRecipe_EndPoint" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://ws.esveikata.lt/cxf</Value>
+    </Setting>
+    <Setting Name="mokymai_eRecipe_EndPoint" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://ws-mokymai.esveikata.lt:443/cxf</Value>
+    </Setting>
+    <Setting Name="eRecipe_timeout" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">300000</Value>
+    </Setting>
+    <Setting Name="POS_nonfiscal_text_length" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">30</Value>
+    </Setting>
+    <Setting Name="max_error_text_length" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">500</Value>
+    </Setting>
+    <Setting Name="registry_path" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">software\Tamro\POS</Value>
+    </Setting>
+    <Setting Name="TimerRecipePathClear" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">900</Value>
+    </Setting>
+    <Setting Name="TimerCheckBU" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">900</Value>
+    </Setting>
+    <Setting Name="TimerEnableErecipe" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">300</Value>
+    </Setting>
+    <Setting Name="TimerFeedbackTerminalHub" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">30</Value>
+    </Setting>
+    <Setting Name="POS_debug_WR_KVAP_KvapWebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://kvap-ws.svp.vlk.lt:443/ws</Value>
+    </Setting>
+    <Setting Name="Locale" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">LT</Value>
+    </Setting>
+    <Setting Name="FMD_Version" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">2.2</Value>
+    </Setting>
+    <Setting Name="ElkUser" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">elastic</Value>
+    </Setting>
+    <Setting Name="ElkPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">I0nwY25GP47A1nJFk0c987Rv</Value>
+    </Setting>
+    <Setting Name="ElkPort" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">9200</Value>
+    </Setting>
+    <Setting Name="DefaultLogIndex" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ltpos</Value>
+    </Setting>
+    <Setting Name="FeedbackTerminalAPI" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://APPSERV.phoenix.loc:7001</Value>
+    </Setting>
+    <Setting Name="FeedbackTerminalAPI_TEST" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://APPSERV.phoenix.loc:7101</Value>
+    </Setting>
+    <Setting Name="ElkIP" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ltka1sl054.tamro.lt</Value>
+    </Setting>
+    <Setting Name="SecretKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">WtYb7AT65hg1igO7FRVb9V376fdXUuZI</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

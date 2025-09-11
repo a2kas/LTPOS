@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="POS_display.wpf.View.PrintPreview"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POS_display.wpf.View"
+             mc:Ignorable="d" 
+             Height="800" Width="650">
+
+    <Grid>
+        <Grid.RowDefinitions> 
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Button Content="Spausdinti" Height="40" HorizontalAlignment="Left" Margin="5,5,0,0"  
+                Name="PrintDocumentButton" VerticalAlignment="Top" Width="134"  
+                Click="PrintDocument_Click" />
+        <FlowDocumentScrollViewer x:Name="FlowDocumentView" Grid.Row="1" Margin="0,0,0,0">
+        </FlowDocumentScrollViewer>
+    </Grid>
+    
+</UserControl>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://denu00ms0144.phoenix.loc:82/PharmacyInfo.asmx?wsdl" docRef="http://denu00ms0144.phoenix.loc:82/PharmacyInfo.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://denu00ms0144.phoenix.loc:82/PharmacyInfo.asmx" xmlns:q1="http://tempuri.org/" binding="q1:PharmacyInfoSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://denu00ms0144.phoenix.loc:82/PharmacyInfo.asmx" xmlns:q2="http://tempuri.org/" binding="q2:PharmacyInfoSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

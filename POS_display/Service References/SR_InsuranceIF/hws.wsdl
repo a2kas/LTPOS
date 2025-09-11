@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="Login">
+        <s:complexType />
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="tns:AuthInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AuthInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="hsp_guid" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="unit_name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="country_oid" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="login_result" type="tns:LoginResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="LoginResult">
+        <s:restriction base="s:string">
+          <s:enumeration value="Ok" />
+          <s:enumeration value="Unauthorized" />
+          <s:enumeration value="Critical_Error" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="Request">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:Request" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Request">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SelfSerializeableObject">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="card_number" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="personal_code" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="hsp_guid" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="unit" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="request_guid" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="notes" type="tns:ArrayOfAdditionalItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="services" type="tns:ArrayOfService" />
+              <s:element minOccurs="0" maxOccurs="1" name="processed_services" type="tns:ArrayOfService" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SelfSerializeableObject" />
+      <s:complexType name="ServiceAnswer">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SelfSerializeableObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="reserve_guid" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="reserve_nr" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="hsp_reserve_guid" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="error" type="tns:ServiceError" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_lv" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_ee" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_lt" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="payable_amount" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="payable_amount_complimentary_part" type="s:decimal" />
+              <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="service_date" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="price" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="count" type="s:unsignedByte" />
+              <s:element minOccurs="1" maxOccurs="1" name="payableUnitCount" nillable="true" type="s:unsignedByte" />
+              <s:element minOccurs="0" maxOccurs="1" name="notes" type="tns:ArrayOfAdditionalItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="ServiceError">
+        <s:restriction base="s:string">
+          <s:enumeration value="Paid_Fully" />
+          <s:enumeration value="Paid_Partly" />
+          <s:enumeration value="Wrong_Service_Code" />
+          <s:enumeration value="Inactive_Service" />
+          <s:enumeration value="Service_Not_Covered" />
+          <s:enumeration value="Limit_Exceeded" />
+          <s:enumeration value="Service_Price_Not_Defined" />
+          <s:enumeration value="Zero_Count" />
+          <s:enumeration value="Price_Less_Than_Zero" />
+          <s:enumeration value="Invalid_Service_Date" />
+          <s:enumeration value="HSP_Reserve_Already_Requested" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfAdditionalItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AdditionalItem" nillable="true" type="tns:AdditionalItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AdditionalItem">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SelfSerializeableObject">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RequestAnswer">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SelfSerializeableObject">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="card_number" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="personal_code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="insured_name" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="card_expiration_date" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="hsp_guid" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="unit" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="request_guid" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="request_nr" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="error" type="tns:RequestError" />
+              <s:element minOccurs="0" maxOccurs="1" name="critical_error_text" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_lv" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_ee" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_lt" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="services" type="tns:ArrayOfServiceAnswer" />
+              <s:element minOccurs="0" maxOccurs="1" name="notes" type="tns:ArrayOfAdditionalItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="RequestError">
+        <s:restriction base="s:string">
+          <s:enumeration value="Ok" />
+          <s:enumeration value="Overuse_Error" />
+          <s:enumeration value="Wrong_HSP_ID" />
+          <s:enumeration value="Invalid_Card_Number" />
+          <s:enumeration value="Invalid_Personal_Code" />
+          <s:enumeration value="Insurance_Expired" />
+          <s:enumeration value="Cannot_Add_Services" />
+          <s:enumeration value="Critical_Error" />
+          <s:enumeration value="PersonDoesNotHaveConsense" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfServiceAnswer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ServiceAnswer" nillable="true" type="tns:ServiceAnswer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Service">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SelfSerializeableObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="id" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="price" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="count" type="s:unsignedByte" />
+              <s:element minOccurs="1" maxOccurs="1" name="service_date" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="hsp_reserve_guid" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="RiskOid" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="PayableIndemnity" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="PayableIndemnityComplimentaryPart" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="PayableUnitCount" nillable="true" type="s:unsignedByte" />
+              <s:element minOccurs="0" maxOccurs="1" name="notes" type="tns:ArrayOfAdditionalItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfService">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Service" nillable="true" type="tns:Service" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestResult" type="tns:RequestAnswer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestWeb">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:Request" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestWebResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestWebResult" type="tns:RequestAnswer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Confirm">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="confirmation" type="tns:Confirmation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Confirmation">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SelfSerializeableObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="hsp_guid" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="unit" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="notes" type="tns:ArrayOfAdditionalItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="services" type="tns:ArrayOfServiceConfirmation" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfServiceConfirmation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ServiceConfirmation" nillable="true" type="tns:ServiceConfirmation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ServiceConfirmation">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SelfSerializeableObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="reserve_guid" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="notes" type="tns:ArrayOfAdditionalItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="ConfirmResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConfirmResult" type="tns:ConfirmationAnswer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ConfirmationAnswer">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SelfSerializeableObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="hsp_guid" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="batch_guid" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="create_ts" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="unit" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="notes" type="tns:ArrayOfAdditionalItem" />
+              <s:element minOccurs="1" maxOccurs="1" name="error" type="tns:ConfirmationError" />
+              <s:element minOccurs="0" maxOccurs="1" name="critical_error_text" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_lv" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_ee" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_lt" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="services" type="tns:ArrayOfServiceConfirmationAnswer" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="ConfirmationError">
+        <s:restriction base="s:string">
+          <s:enumeration value="Ok" />
+          <s:enumeration value="Wrong_HSP_ID" />
+          <s:enumeration value="Critical_Error" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfServiceConfirmationAnswer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ServiceConfirmationAnswer" nillable="true" type="tns:ServiceConfirmationAnswer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ServiceConfirmationAnswer">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SelfSerializeableObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="create_ts" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="error" type="tns:ServiceConfirmationError" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_lv" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_ee" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_lt" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="confirmation_guid" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="reserve_guid" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="notes" type="tns:ArrayOfAdditionalItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="ServiceConfirmationError">
+        <s:restriction base="s:string">
+          <s:enumeration value="Ok" />
+          <s:enumeration value="Wrong_Reserve_ID" />
+          <s:enumeration value="Wrong_HSP_ID" />
+          <s:enumeration value="Confirmation_Timeout_Expired" />
+          <s:enumeration value="Cannot_Confirm_Reserve" />
+          <s:enumeration value="HSP_Reserve_Already_Confirmed" />
+          <s:enumeration value="Reserve_Already_Confirmed" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ConfirmWeb">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="confirmation" type="tns:Confirmation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmWebResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConfirmWebResult" type="tns:ConfirmationAnswer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Cancel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cancelation" type="tns:Cancelation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Cancelation">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SelfSerializeableObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="hsp_guid" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="unit" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="notes" type="tns:ArrayOfAdditionalItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="services" type="tns:ArrayOfServiceCancelation" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfServiceCancelation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ServiceCancelation" nillable="true" type="tns:ServiceCancelation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ServiceCancelation">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SelfSerializeableObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="reserve_guid" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="confirmation_guid" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="notes" type="tns:ArrayOfAdditionalItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="CancelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CancelResult" type="tns:CancelationAnswer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CancelationAnswer">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SelfSerializeableObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="hsp_guid" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="batch_guid" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="create_ts" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="unit" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="notes" type="tns:ArrayOfAdditionalItem" />
+              <s:element minOccurs="1" maxOccurs="1" name="error" type="tns:CancelationError" />
+              <s:element minOccurs="0" maxOccurs="1" name="critical_error_text" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_lv" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_ee" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_lt" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="services" type="tns:ArrayOfServiceCancelationAnswer" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="CancelationError">
+        <s:restriction base="s:string">
+          <s:enumeration value="Ok" />
+          <s:enumeration value="Wrong_HSP_ID" />
+          <s:enumeration value="Critical_Error" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfServiceCancelationAnswer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ServiceCancelationAnswer" nillable="true" type="tns:ServiceCancelationAnswer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ServiceCancelationAnswer">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SelfSerializeableObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="error" type="tns:ServiceCancelationError" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_lv" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_ee" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_lt" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="create_ts" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="cancelation_guid" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="reserve_guid" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="confirmation_guid" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="notes" type="tns:ArrayOfAdditionalItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="ServiceCancelationError">
+        <s:restriction base="s:string">
+          <s:enumeration value="Ok" />
+          <s:enumeration value="Wrong_Reserve_ID" />
+          <s:enumeration value="Wrong_HSP_ID" />
+          <s:enumeration value="Cancelation_Timeout_Expired" />
+          <s:enumeration value="Cannot_Cancel_Reserve" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="RequestInformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ri" type="tns:RequestInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SelfSerializeableObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="hsp_guid" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="unit" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="request_guid" type="s1:guid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="RequestInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestInformationResult" type="tns:RequestInfoAnswer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestInfoAnswer">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SelfSerializeableObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="hsp_guid" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="unit" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="request_guid" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="request_nr" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="error" type="tns:RequestInfoError" />
+              <s:element minOccurs="1" maxOccurs="1" name="request_error" type="tns:RequestError" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_lv" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_ee" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_lt" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="critical_error_text" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="services" type="tns:ArrayOfReserveInfoAnswer" />
+              <s:element minOccurs="0" maxOccurs="1" name="notes" type="tns:ArrayOfAdditionalItem" />
+              <s:element minOccurs="1" maxOccurs="1" name="create_ts" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="card_number" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="personal_code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="insured_name" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="total_requested" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="card_expiration_date" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="total_payable" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="total_paid" type="s:decimal" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="RequestInfoError">
+        <s:restriction base="s:string">
+          <s:enumeration value="Ok" />
+          <s:enumeration value="Wrong_HSP_ID" />
+          <s:enumeration value="Wrong_Request_ID" />
+          <s:enumeration value="Critical_Error" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfReserveInfoAnswer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ReserveInfoAnswer" nillable="true" type="tns:ReserveInfoAnswer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ReserveInfoAnswer">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SelfSerializeableObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="hsp_guid" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="request_login" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="reserve_guid" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="hsp_reserve_guid" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="reserve_nr" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="service_date" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="service_status" type="tns:ReserveStatus" />
+              <s:element minOccurs="1" maxOccurs="1" name="service_error" type="tns:ServiceError" />
+              <s:element minOccurs="0" maxOccurs="1" name="critical_error_text" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="service_error_description_lv" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="service_error_description_ee" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="service_error_description_lt" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="service_code" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="price_registered" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="price_requested" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="RiskOid" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="payable_amount" type="s:decimal" />
+              <s:element minOccurs="0" maxOccurs="1" name="request_notes" type="tns:ArrayOfAdditionalItem" />
+              <s:element minOccurs="1" maxOccurs="1" name="create_ts" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="close_ts" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="confirmation_guid" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="confirmation_ts" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="confirmation_login" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="confirmation_notes" type="tns:ArrayOfAdditionalItem" />
+              <s:element minOccurs="1" maxOccurs="1" name="cancelation_guid" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="cancelation_ts" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="cancelation_login" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="cancelation_notes" type="tns:ArrayOfAdditionalItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="ReserveStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="New" />
+          <s:enumeration value="Expired" />
+          <s:enumeration value="ActiveCancelable" />
+          <s:enumeration value="Active" />
+          <s:enumeration value="Canceled" />
+          <s:enumeration value="Closed" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="Report">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="report_request" type="tns:Report" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Report">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SelfSerializeableObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="hsp_guid" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="unit" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="start_date" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="end_date" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="based_on" type="tns:ReportOn" />
+              <s:element minOccurs="1" maxOccurs="1" name="retrieve_confirmations" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="retrieve_cancelations" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="retrieve_services" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="ReportOn">
+        <s:restriction base="s:string">
+          <s:enumeration value="Request_Date" />
+          <s:enumeration value="Service_Date" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReportResult" type="tns:ReportAnswer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ReportAnswer">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SelfSerializeableObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="error" type="tns:ReportError" />
+              <s:element minOccurs="0" maxOccurs="1" name="critical_error_text" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_lv" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_ee" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="error_description_lt" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="hsp_guid" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="unit" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="start_date" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="end_date" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="requests" type="tns:ArrayOfRequestInfoAnswer" />
+              <s:element minOccurs="0" maxOccurs="1" name="confirmations" type="tns:ArrayOfConfirmationAnswer" />
+              <s:element minOccurs="0" maxOccurs="1" name="cancelations" type="tns:ArrayOfCancelationAnswer" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="ReportError">
+        <s:restriction base="s:string">
+          <s:enumeration value="Ok" />
+          <s:enumeration value="Wrong_HSP_ID" />
+          <s:enumeration value="Critical_Error" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfRequestInfoAnswer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RequestInfoAnswer" nillable="true" type="tns:RequestInfoAnswer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfConfirmationAnswer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConfirmationAnswer" nillable="true" type="tns:ConfirmationAnswer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCancelationAnswer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CancelationAnswer" nillable="true" type="tns:CancelationAnswer" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ManageUnit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:UnitRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UnitRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="hsp_guid" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="operation" type="tns:UnitRequestOperation" />
+          <s:element minOccurs="0" maxOccurs="1" name="unit" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="UnitRequestOperation">
+        <s:restriction base="s:string">
+          <s:enumeration value="Add" />
+          <s:enumeration value="Disable" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ManageUnitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ManageUnitResult" type="tns:UnitRequestAnswer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UnitRequestAnswer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="unit_request_guid" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="hsp_guid" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="operation" type="tns:UnitRequestOperation" />
+          <s:element minOccurs="0" maxOccurs="1" name="unit" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="error" type="tns:UnitManagementError" />
+          <s:element minOccurs="0" maxOccurs="1" name="critical_error_text" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="error_description_lv" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="error_description_ee" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="error_description_lt" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="UnitManagementError">
+        <s:restriction base="s:string">
+          <s:enumeration value="Ok" />
+          <s:enumeration value="Wrong_HSP_ID" />
+          <s:enumeration value="Name_Already_Used" />
+          <s:enumeration value="Limit_Reached" />
+          <s:enumeration value="Name_Too_Long" />
+          <s:enumeration value="Critical_Error" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetServices">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="hsp_guid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServicesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServicesResult" type="tns:ServicesInfoAnswer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServicesInfoAnswer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="error" type="tns:ServicesInfoError" />
+          <s:element minOccurs="0" maxOccurs="1" name="services" type="tns:ArrayOfHealthService" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ServicesInfoError">
+        <s:restriction base="s:string">
+          <s:enumeration value="Ok" />
+          <s:enumeration value="Wrong_HSP_ID" />
+          <s:enumeration value="Critical_Error" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfHealthService">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="HealthService" nillable="true" type="tns:HealthService" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HealthService">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RiskOid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="group" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="unit_price" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="RequestSoapIn">
+    <wsdl:part name="parameters" element="tns:Request" />
+  </wsdl:message>
+  <wsdl:message name="RequestSoapOut">
+    <wsdl:part name="parameters" element="tns:RequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="RequestWebSoapIn">
+    <wsdl:part name="parameters" element="tns:RequestWeb" />
+  </wsdl:message>
+  <wsdl:message name="RequestWebSoapOut">
+    <wsdl:part name="parameters" element="tns:RequestWebResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmSoapIn">
+    <wsdl:part name="parameters" element="tns:Confirm" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfirmResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmWebSoapIn">
+    <wsdl:part name="parameters" element="tns:ConfirmWeb" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmWebSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfirmWebResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelSoapIn">
+    <wsdl:part name="parameters" element="tns:Cancel" />
+  </wsdl:message>
+  <wsdl:message name="CancelSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelResponse" />
+  </wsdl:message>
+  <wsdl:message name="RequestInformationSoapIn">
+    <wsdl:part name="parameters" element="tns:RequestInformation" />
+  </wsdl:message>
+  <wsdl:message name="RequestInformationSoapOut">
+    <wsdl:part name="parameters" element="tns:RequestInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReportSoapIn">
+    <wsdl:part name="parameters" element="tns:Report" />
+  </wsdl:message>
+  <wsdl:message name="ReportSoapOut">
+    <wsdl:part name="parameters" element="tns:ReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="ManageUnitSoapIn">
+    <wsdl:part name="parameters" element="tns:ManageUnit" />
+  </wsdl:message>
+  <wsdl:message name="ManageUnitSoapOut">
+    <wsdl:part name="parameters" element="tns:ManageUnitResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServicesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServices" />
+  </wsdl:message>
+  <wsdl:message name="GetServicesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServicesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="HWSSoap">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Request">
+      <wsdl:input message="tns:RequestSoapIn" />
+      <wsdl:output message="tns:RequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestWeb">
+      <wsdl:input message="tns:RequestWebSoapIn" />
+      <wsdl:output message="tns:RequestWebSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Confirm">
+      <wsdl:input message="tns:ConfirmSoapIn" />
+      <wsdl:output message="tns:ConfirmSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmWeb">
+      <wsdl:input message="tns:ConfirmWebSoapIn" />
+      <wsdl:output message="tns:ConfirmWebSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Cancel">
+      <wsdl:input message="tns:CancelSoapIn" />
+      <wsdl:output message="tns:CancelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestInformation">
+      <wsdl:input message="tns:RequestInformationSoapIn" />
+      <wsdl:output message="tns:RequestInformationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Report">
+      <wsdl:input message="tns:ReportSoapIn" />
+      <wsdl:output message="tns:ReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ManageUnit">
+      <wsdl:input message="tns:ManageUnitSoapIn" />
+      <wsdl:output message="tns:ManageUnitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServices">
+      <wsdl:input message="tns:GetServicesSoapIn" />
+      <wsdl:output message="tns:GetServicesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HWSSoap" type="tns:HWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Request">
+      <soap:operation soapAction="http://tempuri.org/Request" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestWeb">
+      <soap:operation soapAction="http://tempuri.org/RequestWeb" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Confirm">
+      <soap:operation soapAction="http://tempuri.org/Confirm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmWeb">
+      <soap:operation soapAction="http://tempuri.org/ConfirmWeb" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Cancel">
+      <soap:operation soapAction="http://tempuri.org/Cancel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestInformation">
+      <soap:operation soapAction="http://tempuri.org/RequestInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Report">
+      <soap:operation soapAction="http://tempuri.org/Report" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ManageUnit">
+      <soap:operation soapAction="http://tempuri.org/ManageUnit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServices">
+      <soap:operation soapAction="http://tempuri.org/GetServices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="HWSSoap12" type="tns:HWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Request">
+      <soap12:operation soapAction="http://tempuri.org/Request" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestWeb">
+      <soap12:operation soapAction="http://tempuri.org/RequestWeb" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Confirm">
+      <soap12:operation soapAction="http://tempuri.org/Confirm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmWeb">
+      <soap12:operation soapAction="http://tempuri.org/ConfirmWeb" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Cancel">
+      <soap12:operation soapAction="http://tempuri.org/Cancel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestInformation">
+      <soap12:operation soapAction="http://tempuri.org/RequestInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Report">
+      <soap12:operation soapAction="http://tempuri.org/Report" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ManageUnit">
+      <soap12:operation soapAction="http://tempuri.org/ManageUnit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServices">
+      <soap12:operation soapAction="http://tempuri.org/GetServices" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HWS">
+    <wsdl:port name="HWSSoap" binding="tns:HWSSoap">
+      <soap:address location="https://testweb.if.lv/hws/hws.asmx" />
+    </wsdl:port>
+    <wsdl:port name="HWSSoap12" binding="tns:HWSSoap12">
+      <soap12:address location="https://testweb.if.lv/hws/hws.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

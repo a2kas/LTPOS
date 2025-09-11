@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="POSAuthorizeCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="partnerId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="posId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardNoHash" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="POSAuthorizeCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cardSessionId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="errCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="errMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="POSGetCardBalance">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="partnerId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="posId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardNoHash" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="POSGetCardBalanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cardlimits" type="tns:ArrayOfXCardLimit" />
+            <s:element minOccurs="1" maxOccurs="1" name="errCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="errMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfXCardLimit">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="xCardLimit" type="tns:xCardLimit" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="xCardLimit">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="xLimitCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="xLimitName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="xLimitBalance" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="POSCalculateCompensation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="partnerId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="posId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardSessionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="currentReceipt" type="tns:POSpurchaseReceipt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="POSpurchaseReceipt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="purchasedServices" type="tns:ArrayOfPOSpurchasedService" />
+          <s:element minOccurs="0" maxOccurs="1" name="xAuthCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="finalAmount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="originalAmount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="compensatedAmount" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPOSpurchasedService">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="POSpurchasedService" nillable="true" type="tns:POSpurchasedService" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="POSpurchasedService">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="recId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="lName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="lCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="lVATRate" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="lPrice" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="lItemQuantity" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="lTotal" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="lWasStateCompensation" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="lStateCmpsnValue" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="ATCCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="lHasReceipt" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="xCompensatedValue" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="xFinalTotal" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="xCmpsnReason" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="xCmpsnMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="xLimitName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="xLimitBalance" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="POSCalculateCompensationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="currentReceipt" type="tns:POSpurchaseReceipt" />
+            <s:element minOccurs="1" maxOccurs="1" name="errCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="errMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="POSConfirmCompensation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="partnerId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="posId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardSessionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="currentReceipt" type="tns:POSpurchaseReceipt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="POSConfirmCompensationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="compensationAuthNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="errCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="errMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="POSCancelCompensation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="partnerId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="posId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardSessionId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="POSCancelCompensationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="errCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="errMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="POSVoidCompensation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="partnerId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="posId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardSessionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="compensationAuthNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="POSVoidCompensationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="errCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="errMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Ping">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pingId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="localTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="databaseRequestDuration" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="errCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="errMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="POSAuthorizeCardSoapIn">
+    <wsdl:part name="parameters" element="tns:POSAuthorizeCard" />
+  </wsdl:message>
+  <wsdl:message name="POSAuthorizeCardSoapOut">
+    <wsdl:part name="parameters" element="tns:POSAuthorizeCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="POSGetCardBalanceSoapIn">
+    <wsdl:part name="parameters" element="tns:POSGetCardBalance" />
+  </wsdl:message>
+  <wsdl:message name="POSGetCardBalanceSoapOut">
+    <wsdl:part name="parameters" element="tns:POSGetCardBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="POSCalculateCompensationSoapIn">
+    <wsdl:part name="parameters" element="tns:POSCalculateCompensation" />
+  </wsdl:message>
+  <wsdl:message name="POSCalculateCompensationSoapOut">
+    <wsdl:part name="parameters" element="tns:POSCalculateCompensationResponse" />
+  </wsdl:message>
+  <wsdl:message name="POSConfirmCompensationSoapIn">
+    <wsdl:part name="parameters" element="tns:POSConfirmCompensation" />
+  </wsdl:message>
+  <wsdl:message name="POSConfirmCompensationSoapOut">
+    <wsdl:part name="parameters" element="tns:POSConfirmCompensationResponse" />
+  </wsdl:message>
+  <wsdl:message name="POSCancelCompensationSoapIn">
+    <wsdl:part name="parameters" element="tns:POSCancelCompensation" />
+  </wsdl:message>
+  <wsdl:message name="POSCancelCompensationSoapOut">
+    <wsdl:part name="parameters" element="tns:POSCancelCompensationResponse" />
+  </wsdl:message>
+  <wsdl:message name="POSVoidCompensationSoapIn">
+    <wsdl:part name="parameters" element="tns:POSVoidCompensation" />
+  </wsdl:message>
+  <wsdl:message name="POSVoidCompensationSoapOut">
+    <wsdl:part name="parameters" element="tns:POSVoidCompensationResponse" />
+  </wsdl:message>
+  <wsdl:message name="PingSoapIn">
+    <wsdl:part name="parameters" element="tns:Ping" />
+  </wsdl:message>
+  <wsdl:message name="PingSoapOut">
+    <wsdl:part name="parameters" element="tns:PingResponse" />
+  </wsdl:message>
+  <wsdl:portType name="HealthInsuranceECRCompensationServiceSoap">
+    <wsdl:operation name="POSAuthorizeCard">
+      <wsdl:input message="tns:POSAuthorizeCardSoapIn" />
+      <wsdl:output message="tns:POSAuthorizeCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="POSGetCardBalance">
+      <wsdl:input message="tns:POSGetCardBalanceSoapIn" />
+      <wsdl:output message="tns:POSGetCardBalanceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="POSCalculateCompensation">
+      <wsdl:input message="tns:POSCalculateCompensationSoapIn" />
+      <wsdl:output message="tns:POSCalculateCompensationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="POSConfirmCompensation">
+      <wsdl:input message="tns:POSConfirmCompensationSoapIn" />
+      <wsdl:output message="tns:POSConfirmCompensationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="POSCancelCompensation">
+      <wsdl:input message="tns:POSCancelCompensationSoapIn" />
+      <wsdl:output message="tns:POSCancelCompensationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="POSVoidCompensation">
+      <wsdl:input message="tns:POSVoidCompensationSoapIn" />
+      <wsdl:output message="tns:POSVoidCompensationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <wsdl:input message="tns:PingSoapIn" />
+      <wsdl:output message="tns:PingSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HealthInsuranceECRCompensationServiceSoap" type="tns:HealthInsuranceECRCompensationServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="POSAuthorizeCard">
+      <soap:operation soapAction="http://tempuri.org/POSAuthorizeCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="POSGetCardBalance">
+      <soap:operation soapAction="http://tempuri.org/POSGetCardBalance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="POSCalculateCompensation">
+      <soap:operation soapAction="http://tempuri.org/POSCalculateCompensation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="POSConfirmCompensation">
+      <soap:operation soapAction="http://tempuri.org/POSConfirmCompensation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="POSCancelCompensation">
+      <soap:operation soapAction="http://tempuri.org/POSCancelCompensation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="POSVoidCompensation">
+      <soap:operation soapAction="http://tempuri.org/POSVoidCompensation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <soap:operation soapAction="http://tempuri.org/Ping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="HealthInsuranceECRCompensationServiceSoap12" type="tns:HealthInsuranceECRCompensationServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="POSAuthorizeCard">
+      <soap12:operation soapAction="http://tempuri.org/POSAuthorizeCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="POSGetCardBalance">
+      <soap12:operation soapAction="http://tempuri.org/POSGetCardBalance" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="POSCalculateCompensation">
+      <soap12:operation soapAction="http://tempuri.org/POSCalculateCompensation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="POSConfirmCompensation">
+      <soap12:operation soapAction="http://tempuri.org/POSConfirmCompensation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="POSCancelCompensation">
+      <soap12:operation soapAction="http://tempuri.org/POSCancelCompensation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="POSVoidCompensation">
+      <soap12:operation soapAction="http://tempuri.org/POSVoidCompensation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <soap12:operation soapAction="http://tempuri.org/Ping" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HealthInsuranceECRCompensationService">
+    <wsdl:port name="HealthInsuranceECRCompensationServiceSoap" binding="tns:HealthInsuranceECRCompensationServiceSoap">
+      <soap:address location="https://testinsurance.eps.lt/IFPOS.Service/healthInsEcrServiceWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="HealthInsuranceECRCompensationServiceSoap12" binding="tns:HealthInsuranceECRCompensationServiceSoap12">
+      <soap12:address location="https://testinsurance.eps.lt/IFPOS.Service/healthInsEcrServiceWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

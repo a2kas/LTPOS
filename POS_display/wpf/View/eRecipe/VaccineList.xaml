@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="POS_display.wpf.View.VaccineList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POS_display.wpf.View"
+             xmlns:wpf="clr-namespace:POS_display.wpf"
+             xmlns:POS_display="clr-namespace:POS_display" xmlns:View="clr-namespace:POS_display.wpf.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="570">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <wpf:BusyToCursorConverter x:Key="BusyToCursorConverter"/>
+            <wpf:DateFormat x:Key="DateFormat"/>
+            <wpf:NumberFormat x:Key="NumberFormat"/>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../style/defaultStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <UserControl.Cursor>
+        <Binding Path="DataContext.IsBusy" RelativeSource="{RelativeSource Self}" Converter="{StaticResource BusyToCursorConverter}"/>
+    </UserControl.Cursor>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="95"/>
+            <ColumnDefinition Width="95"/>
+            <ColumnDefinition Width="95"/>
+            <ColumnDefinition Width="95"/>
+            <ColumnDefinition Width="85"/>
+            <ColumnDefinition Width="105"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="btnSign" Grid.Row="0" Grid.Column="0" Content="Pasirašyti" Command="{Binding SignCommand}" IsEnabled="{Binding IsEnabled}" Width="90" Height="25"/>
+        <CheckBox x:Name="cbSelAll" Content="Pasirinkti visus" Grid.Row="0" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" Checked="datagrid_selectAll" Unchecked="datagrid_unselectAll" IsEnabled="{Binding IsEnabled, Mode=OneWay}"/>
+        <DataGrid x:Name="dataGrid">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGrid}" BasedOn="{StaticResource defaultDataGrid}">
+                    <EventSetter Event="Selector.SelectionChanged" Handler="dataGrid_SelectionChanged" />
+                    <Setter Property="Grid.Row" Value="1"/>
+                    <Setter Property="Grid.ColumnSpan" Value="7"/>
+                    <Setter Property="ItemsSource" Value="{Binding VaccineList}"/>
+                    <Setter Property="SelectionMode" Value="Extended"/>
+                    <Setter Property="IsReadOnly" Value="True"/>
+                </Style>
+                <Style TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource defaultDataGridCell}">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+                            <Setter Property="Background" Value="#FFC7BDBD" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding selected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding DocType}" Header="Tipas" MinWidth="{Binding Path=ActualWidth, ElementName=DocType }" Width="70" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding CompositionId}" ElementStyle="{StaticResource WrapTextBlock}" Header="Dok. Nr" Width="100" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Practitioner}" ElementStyle="{StaticResource WrapTextBlock}" Header="Vaistininkas" Width="150" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding DiseaseOrVaccineName}" ElementStyle="{StaticResource WrapTextBlock}" Header="Liga/Vakcina" Width="*" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Date, Converter={StaticResource DateFormat}}" Header="Data" MinWidth="{Binding Path=ActualWidth, ElementName=projectInfoHeader }" Width="*" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <local:Navigation x:Name="navigation" Grid.Row="2" Grid.ColumnSpan="7" PageCount="{Binding PageCount}" PageIndex="{Binding PageIndex}" NavigationClick="{Binding PageIndexChangedCommand}" IsBusy="{Binding IsBusy}"/>
+    </Grid>
+</UserControl>

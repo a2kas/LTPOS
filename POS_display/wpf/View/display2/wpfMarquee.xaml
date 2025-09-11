@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="POS_display.wpf.View.display2.wpfMarquee"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POS_display.wpf.View.display2"
+             mc:Ignorable="d" 
+             d:DesignHeight="66" d:DesignWidth="1280" Loaded="Window_Loaded" Background="Transparent">
+    <Grid Background="Transparent">
+        <Canvas x:Name="canMain" HorizontalAlignment="Stretch" Height="66" VerticalAlignment="Bottom" MinWidth="1280" Background="Transparent">
+            <TextBlock x:Name="tbmarquee" FontFamily="Microsoft Sans Serif" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Stretch" Foreground="#FF002664" Height="66" Background="Transparent" Padding="20,0,0,0">
+                <Run>Jūs galite rinktis pigesnius generinius vaistus. Monitoriaus ekrano viršuje, pirmoje eilutėje, matote vaistą, kurį galite įsigyti už mažiausią kainą.</Run>
+                <LineBreak/>
+                <Run>Įsigyjant receptinius vaistinius preparatus, medicininės pagalbos priemones ar medicinos prietaisus su elektroniniu arba kompensuojamu</Run>
+                <LineBreak/>
+                <Run>popieriniu receptu, farmacijos specialistui būtina pateikti asmens tapatybę patvirtinantį dokumentą.</Run>
+            </TextBlock>
+        </Canvas>
+    </Grid>
+</UserControl>

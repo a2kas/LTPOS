@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="POS_display.wpfMarquee"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POS_display"
+             mc:Ignorable="d" 
+             d:DesignHeight="33" d:DesignWidth="1280" Loaded="Window_Loaded" Background="Transparent">
+        <Grid Background="Transparent">
+            <Canvas x:Name="canMain" HorizontalAlignment="Stretch" Height="33" VerticalAlignment="Bottom" MinWidth="1280" Background="Transparent">
+            <TextBlock x:Name="tbmarquee" Text="Jūs galite rinktis pigesnius generinius vaistus. Monitoriaus ekrano viršuje, pirmoje eilutėje, matote vaistą, kurį galite įsigyti už mažiausią kainą." FontFamily="Microsoft Sans Serif" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Stretch" Foreground="#FF002664" Height="33" Background="Transparent"/>
+        </Canvas>
+
+        </Grid>
+</UserControl>

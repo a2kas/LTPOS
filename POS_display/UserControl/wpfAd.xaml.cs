@@ -1,0 +1,88 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
+using System.Linq;
+using System.Resources;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Windows.Threading;
+
+namespace POS_display
+{
+    /// <summary>
+    /// Interaction logic for wpfAd.xaml
+    /// </summary>
+    public partial class wpfAd : UserControl
+    {
+        private int ImageInterval;
+        public wpfAd()
+        {
+            InitializeComponent();
+            System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            dispatcherTimer.Tick += dispatcherTimer_Tick;
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Start();
+            LoadAnotherImage();
+        }
+        
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            this.ImageInterval++;
+
+            if (this.ImageInterval >= 8)
+            {
+                LoadAnotherImage();
+                this.ImageInterval = 0;
+            }
+        }
+
+        private void LoadAnotherImage()
+        {
+            try
+            {
+                if (Session.ImagesAd == null)
+                    return;
+                Dispatcher.BeginInvoke(
+                    DispatcherPriority.Background, new Action(() =>
+                {
+                    //string img = Session.FileUtils.GetRandomImageFromPath(Session.ImagePath, "ad_");
+                    //if (!img.Equals(""))
+                    var img = helpers.GetRandomFromList(Session.ImagesAd);
+                    if (img != null)
+                    {
+                        using (MemoryStream stream = new MemoryStream(img))
+                        {
+                            BitmapImage bitmap = new BitmapImage();
+                            bitmap.BeginInit();
+                            bitmap.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                            bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                            bitmap.UriSource = null;
+                            bitmap.StreamSource = stream;
+                            bitmap.EndInit();
+                            imgAd.Source = bitmap;
+                            imgAd.Stretch = Stretch.Fill;
+                        }
+                    }
+                    else
+                        imgAd.Source = null;
+                }));
+            }
+            catch (Exception ex)
+            {
+                helpers.alert(Enumerator.alert.display2, ex.Message);
+            }
+        }
+    }
+}

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetPharmacyInfoForDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pharmac_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPharmacyInfoForDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPharmacyInfoForDateResult" type="tns:PhInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PhInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PhName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BU" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Forecast" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetInsuranceMaping">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insurance" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="product_id" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="barcode_id" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInsuranceMapingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInsuranceMapingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBalticCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="product_id" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBalticCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBalticCategoryResult" type="tns:BalticCategory" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BalticCategory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="cn3" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="c3_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="cn2" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="c2_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="cn1" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="c1_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="cn0" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="c0_id" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetPharmacyInfoForDateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPharmacyInfoForDate" />
+  </wsdl:message>
+  <wsdl:message name="GetPharmacyInfoForDateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPharmacyInfoForDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInsuranceMapingSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInsuranceMaping" />
+  </wsdl:message>
+  <wsdl:message name="GetInsuranceMapingSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInsuranceMapingResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBalticCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetBalticCategory" />
+  </wsdl:message>
+  <wsdl:message name="GetBalticCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetBalticCategoryResponse" />
+  </wsdl:message>
+  <wsdl:portType name="TamroWSSoap">
+    <wsdl:operation name="GetPharmacyInfoForDate">
+      <wsdl:input message="tns:GetPharmacyInfoForDateSoapIn" />
+      <wsdl:output message="tns:GetPharmacyInfoForDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInsuranceMaping">
+      <wsdl:input message="tns:GetInsuranceMapingSoapIn" />
+      <wsdl:output message="tns:GetInsuranceMapingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBalticCategory">
+      <wsdl:input message="tns:GetBalticCategorySoapIn" />
+      <wsdl:output message="tns:GetBalticCategorySoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TamroWSSoap" type="tns:TamroWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetPharmacyInfoForDate">
+      <soap:operation soapAction="http://tempuri.org/GetPharmacyInfoForDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInsuranceMaping">
+      <soap:operation soapAction="http://tempuri.org/GetInsuranceMaping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBalticCategory">
+      <soap:operation soapAction="http://tempuri.org/GetBalticCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TamroWSSoap12" type="tns:TamroWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetPharmacyInfoForDate">
+      <soap12:operation soapAction="http://tempuri.org/GetPharmacyInfoForDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInsuranceMaping">
+      <soap12:operation soapAction="http://tempuri.org/GetInsuranceMaping" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBalticCategory">
+      <soap12:operation soapAction="http://tempuri.org/GetBalticCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TamroWS">
+    <wsdl:port name="TamroWSSoap" binding="tns:TamroWSSoap">
+      <soap:address location="http://it-agent1.phoenix.loc:8186/TamroWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TamroWSSoap12" binding="tns:TamroWSSoap12">
+      <soap12:address location="http://it-agent1.phoenix.loc:8186/TamroWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

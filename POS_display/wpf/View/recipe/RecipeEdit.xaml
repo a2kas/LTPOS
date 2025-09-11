@@ -1,0 +1,140 @@
+﻿<UserControl x:Class="POS_display.wpf.View.recipe.RecipeEdit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POS_display.wpf.View.recipe"
+             mc:Ignorable="d" 
+             xmlns:wpf="clr-namespace:POS_display.wpf"
+             Height="607" Width="580">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <FrameworkElement x:Key="ProxyElement" DataContext="{Binding}" />
+            <wpf:BusyToCursorConverter x:Key="BusyToCursorConverter"/>
+            <wpf:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+            <wpf:UpperCaseConvert x:Key="UpperCaseConvert"/>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../style/defaultStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid DataContext="{Binding RecipeEditModel}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Išsaugoti" Grid.Row="0" Style="{StaticResource defaultButton}"/>
+        <Button Content="Patvirtinti" Grid.Row="0" Grid.Column="1" Style="{StaticResource defaultButton}"/>
+        <Button Content="Spausdinti" Grid.Row="0" Grid.Column="2" Style="{StaticResource defaultButton}"/>
+        <Button Content="Koreguoti" Grid.Row="0" Grid.Column="3" Style="{StaticResource defaultButton}"/>
+        <Button Content="Tikrinti TLK" IsEnabled="{Binding Path=!E_Recipe}" Grid.Row="0" Grid.Column="4" Style="{StaticResource defaultButton}"/>
+        <Button Content="Uždaryti" Grid.Row="0" Grid.Column="9" Style="{StaticResource defaultButton}"/>
+        <Separator Grid.Row="1" Grid.ColumnSpan="10"/>
+        <Label Content="Sandėlis" Grid.Row="2" Style="{StaticResource defaultLabel}"/>
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5" Style="{StaticResource defaultTextBox}"  />
+        <Button Content="..." Grid.Row="2" Grid.Column="6" Style="{StaticResource defaultButton}"/>
+        <Label Content="Barkodas" Grid.Row="3" Style="{StaticResource defaultLabel}"/>
+        <TextBox Text="{Binding Barcode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding Path=!Barcode_Enabled}" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5" Style="{StaticResource defaultTextBox}"  />
+        <Button Content="..." Grid.Row="3" Grid.Column="6" Style="{StaticResource defaultButton}" IsEnabled="{Binding Barcode_Enabled}"/>
+        <Label Content="Prekės pavadinimas" Grid.Row="4" Style="{StaticResource defaultLabel}"/>
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="9" Style="{StaticResource defaultTextBox}" IsReadOnly="True" />
+        <Separator Grid.Row="5" Grid.ColumnSpan="10"/>
+        <Label Content="KVP Nr. (rec. nr.)" Grid.Row="6" Style="{StaticResource defaultLabel}"/>
+        <Label Content="KVP gydytojo kodas" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource defaultLabel}"/>
+        <Label Content="Kompensavimo kodas" Grid.Row="6" Grid.Column="5" Grid.ColumnSpan="3" Style="{StaticResource defaultLabel}"/>
+        <Label Content="Išrašymo data" Grid.Row="6" Grid.Column="9" Style="{StaticResource defaultLabel}"/>
+        <DatePicker Grid.Row="7" Grid.Column="0" />
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding E_Recipe}" Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource defaultTextBox}" />
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Grid.Column="5" Style="{StaticResource defaultTextBox}" />
+        <Button Content="..." Grid.Row="7" Grid.Column="6" Style="{StaticResource defaultButton}"/>
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Grid.Column="7" Style="{StaticResource defaultTextBox}" />
+        <DatePicker Grid.Row="7" Grid.Column="9" />
+        <Label Content="Įsigalioja nuo" Grid.Row="8" Style="{StaticResource defaultLabel}"/>
+        <Label Content="Dozių sk." Grid.Row="8" Grid.Column="2" Style="{StaticResource defaultLabel}"/>
+        <Label Content="Kiekis d." Grid.Row="8" Grid.Column="3" Style="{StaticResource defaultLabel}"/>
+        <Label Content="Dienų skaičius" Grid.Row="8" Grid.Column="5" Grid.ColumnSpan="3" Style="{StaticResource defaultLabel}"/>
+        <Label Content="Pakanka iki" Grid.Row="8" Grid.Column="9" Style="{StaticResource defaultLabel}"/>
+        <DatePicker Grid.Row="9" Grid.Column="0" />
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="9" Grid.Column="2" Style="{StaticResource defaultTextBox}" />
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="9" Grid.Column="3" Style="{StaticResource defaultTextBox}" />
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="9" Grid.Column="5" Style="{StaticResource defaultTextBox}" />
+        <DatePicker Grid.Row="9" Grid.Column="9" />
+        <Label Content="Galioja iki" Grid.Row="10" Style="{StaticResource defaultLabel}"/>
+        <Label Content="Praeito rec. pakanka iki" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource defaultLabel}"/>
+        <Label Content="Tęstinis rec. įsigalioja nuo" Grid.Row="10" Grid.Column="5" Grid.ColumnSpan="3" Style="{StaticResource defaultLabel}"/>
+        <Label Content="Tęstinis rec. galioja iki" Grid.Row="10" Grid.Column="9" Style="{StaticResource defaultLabel}"/>
+        <DatePicker Grid.Row="11" Grid.Column="0" />
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource defaultTextBox}" />
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="11" Grid.Column="5" Grid.ColumnSpan="3" Style="{StaticResource defaultTextBox}" />
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="11" Grid.Column="9" Style="{StaticResource defaultTextBox}" />
+        <Separator Grid.Row="13" Grid.ColumnSpan="10"/>
+        <Label Content="Ligos kodas" Grid.Row="14" Style="{StaticResource defaultLabel}"/>
+        <Label Content="AAGA arba ISAS" Grid.Row="14" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource defaultLabel}"/>
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="15" Grid.Column="0" Style="{StaticResource defaultTextBox}" />
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="15" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource defaultTextBox}" />
+        <Separator Grid.Row="16" Grid.ColumnSpan="10"/>
+        <Label Content="Pakuočių kiekis" Grid.Row="17" Style="{StaticResource defaultLabel}"/>
+        <Label Content="Išduotas kiekis" Grid.Row="17" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource defaultLabel}"/>
+        <Label Content="Pardavimo data" Grid.Row="17" Grid.Column="5" Grid.ColumnSpan="3" Style="{StaticResource defaultLabel}"/>
+        <Label Content="Kasos kvito data" Grid.Row="17" Grid.Column="9" Style="{StaticResource defaultLabel}"/>
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="18" Grid.Column="0" Style="{StaticResource defaultTextBox}" />
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="18" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource defaultTextBox}" />
+        <DatePicker Grid.Row="18" Grid.Column="5" Grid.ColumnSpan="3" IsEnabled="{Binding BarcodeName_Enabled}"/>
+        <DatePicker Grid.Row="18" Grid.Column="9" IsEnabled="{Binding BarcodeName_Enabled}"/>
+        <Label Content="Pardavimo kaina" Grid.Row="19" Style="{StaticResource defaultLabel}"/>
+        <Label Content="Bazinė kaina" Grid.Row="19" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource defaultLabel}"/>
+        <Label Content="TLK vaisto id" Grid.Row="19" Grid.Column="5" Grid.ColumnSpan="3" Style="{StaticResource defaultLabel}"/>
+        <Label Content="Kasos kvito numeris" Grid.Row="19" Grid.Column="9" Style="{StaticResource defaultLabel}"/>
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="20" Grid.Column="0" Style="{StaticResource defaultTextBox}" />
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="20" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource defaultTextBox}" />
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="20" Grid.Column="5" Grid.ColumnSpan="3" Style="{StaticResource defaultTextBox}" />
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="20" Grid.Column="9" Style="{StaticResource defaultTextBox}" />
+        <Label Content="Kompensuojama suma" Grid.Row="21" Style="{StaticResource defaultLabel}"/>
+        <Label Content="Paciento mokama suma" Grid.Row="21" Grid.Column="5" Grid.ColumnSpan="4" Style="{StaticResource defaultLabel}"/>
+        <Label Content="Suma" Grid.Row="21" Grid.Column="9" Grid.ColumnSpan="2" Style="{StaticResource defaultLabel}"/>
+        <Label Content="Galioja dienų" Grid.Row="23" Grid.Column="0" Style="{StaticResource defaultLabel}"/>
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="22" Grid.Column="0" Style="{StaticResource defaultTextBox}" />
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="22" Grid.Column="5" Grid.ColumnSpan="3" Style="{StaticResource defaultTextBox}" />
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="22" Grid.Column="9" Grid.ColumnSpan="2" Style="{StaticResource defaultTextBox}" />
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="24" Grid.Column="0" Style="{StaticResource defaultTextBox}" />
+        <Label Content="Priemokos komp suma" Grid.Row="21" Grid.Column="2" Grid.ColumnSpan="3" Style="{StaticResource defaultLabel}"/>
+        <TextBox Text="{Binding prepCompSum, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="22" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource defaultTextBox}" />
+        <Label Content="Priklauso priemokos kompensacija" Grid.Row="12" Grid.ColumnSpan="3" Visibility="{Binding isPrepComp, Converter={StaticResource BoolToVisibilityConverter}}" Style="{StaticResource defaultLabel}"/>
+    </Grid>
+</UserControl>

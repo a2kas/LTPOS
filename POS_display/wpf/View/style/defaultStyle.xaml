@@ -1,0 +1,81 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:POS_display.wpf.View"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <Style TargetType="{x:Type Label}" x:Key="defaultLabel">
+    </Style>
+    <Style TargetType="{x:Type Label}" x:Key="boldLabel">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+    <Style TargetType="{x:Type TextBox}" x:Key="defaultTextBox">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <!--<Style.Triggers>
+            <Trigger Property="IsReadOnly" Value="True">
+                <Trigger.Setters>
+                    <Setter Property="Background" Value="#FFB6B6B6" />
+                </Trigger.Setters>
+            </Trigger>
+        </Style.Triggers>-->
+    </Style>
+    <Style TargetType="{x:Type Button}" x:Key="defaultButton">
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+    <Style TargetType="{x:Type ComboBox}" x:Key="defaultComboBox">
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+    <Style TargetType="{x:Type DataGrid}" x:Key="defaultDataGrid">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="ColumnHeaderHeight" Value="25"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="AutoGenerateColumns" Value="False"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="Gray"/>
+        <Setter Property="VerticalGridLinesBrush" Value="Gray"/>
+        <Setter Property="CanUserAddRows" Value="False"/>
+        <Setter Property="CanUserDeleteRows" Value="False"/>
+        <Setter Property="SelectionMode" Value="Single"/>
+        <Setter Property="SelectionUnit" Value="FullRow"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="RowHeight" Value="25"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="RowHeight" Value="{x:Static sys:Double.NaN}"/>
+        <Setter Property="ContextMenu">
+            <Setter.Value>
+                <ContextMenu>
+                    <MenuItem Header="Kopijuoti"
+                      Command="ApplicationCommands.Copy"
+                      CommandTarget="{Binding}"
+                      CommandParameter="{Binding Text}"/>
+                </ContextMenu>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type DataGridCell}" x:Key="defaultDataGridCell">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type DataGridCell}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+                <Setter Property="Background" Value="#FFC7BDBD" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type TextBlock}" x:Key="WrapTextBlock">
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="TextBlock.TextAlignment" Value="Left"/>
+    </Style>
+</ResourceDictionary>

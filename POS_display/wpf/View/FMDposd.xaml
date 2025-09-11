@@ -1,0 +1,95 @@
+﻿<UserControl x:Class="POS_display.wpf.View.FMDposd"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POS_display.wpf.View"
+             xmlns:wpf="clr-namespace:POS_display.wpf"
+             Loaded="UserControl_Loaded"
+             mc:Ignorable="d" 
+             Height="430" Width="650">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <FrameworkElement x:Key="ProxyElement" DataContext="{Binding}" />
+            <wpf:BusyToCursorConverter x:Key="BusyToCursorConverter"/>
+            <wpf:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+            <wpf:UpperCaseConvert x:Key="UpperCaseConvert"/>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="style/defaultStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <UserControl.Cursor>
+        <Binding Path="DataContext.IsBusy" RelativeSource="{RelativeSource Self}" Converter="{StaticResource BusyToCursorConverter}"/>
+    </UserControl.Cursor>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="95"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="95"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Skenavimas" Grid.Row="0" Grid.ColumnSpan="4" Style="{StaticResource boldLabel}"/>
+        <Label Content="2D kodas" Grid.Row="1" Style="{StaticResource defaultLabel}"/>
+        <local:TextBox2D x:Name="tb2Dcode" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding code2d, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Style="{StaticResource defaultTextBox}" IsEnabled="{Binding IsEnabled}">
+            <TextBox.InputBindings>
+                <KeyBinding Key="Return" 
+                    Command="{Binding ParseCommand}"/>
+            </TextBox.InputBindings>
+        </local:TextBox2D>
+        <Button Content="Konvertuoti" Grid.Row="1" Grid.Column="3" Command="{Binding ParseCommand}" Style="{StaticResource defaultButton}" IsEnabled="{Binding IsEnabled}" />
+        <Label Content="Rankinis duomenų vedimas" Grid.Row="2" Grid.ColumnSpan="4" Style="{StaticResource boldLabel}"/>
+        <Label Content="Produkto kodas" Grid.Row="3" Style="{StaticResource defaultLabel}"/>
+        <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding BarcodeType, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedBarcodeType}" Style="{StaticResource defaultComboBox}"/>
+        <TextBox Text="{Binding productCode, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="2" Style="{StaticResource defaultTextBox}" IsEnabled="{Binding IsEnabled}" />
+        <Label Content="Nuoseklusis numeris" Grid.Row="4" Style="{StaticResource defaultLabel}"/>
+        <TextBox Text="{Binding serialNumber, Converter={StaticResource UpperCaseConvert}, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource defaultTextBox}" IsEnabled="{Binding IsEnabled}">
+            <TextBox.InputBindings>
+                <KeyBinding Key="Return" 
+                    Command="{Binding ManualInputCommand}"
+                    CommandParameter="{Binding ElementName=MyTextBox, Path=Text}"/>
+            </TextBox.InputBindings>
+        </TextBox>
+        <Button Content="Pateikti" Grid.Row="4" Grid.Column="3" Command="{Binding ManualInputCommand}" Style="{StaticResource defaultButton}" IsEnabled="{Binding IsEnabled}"/>
+        <Label Grid.Row="5" Grid.ColumnSpan="3" Style="{StaticResource boldLabel}">
+            <CheckBox IsChecked="{Binding Path=Barcode2DException, Mode=TwoWay}" Content="2D kodo nėra/pažeistas" FontWeight="Normal" />
+        </Label>
+        <Label Content="{Binding LeftAmount}" Grid.Row="5" Grid.Column="3" Style="{StaticResource boldLabel}" Foreground="Red"/>
+        <ContentControl Content="{StaticResource ProxyElement}" Visibility="Collapsed" />
+        <DataGrid x:Name="dataGrid" Grid.Row="7" Grid.ColumnSpan="4" ItemsSource="{Binding Path=fmd_models, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, IsAsync=True}" Style="{StaticResource defaultDataGrid}" SelectedItem="{Binding selected_fmd_model}" CellStyle="{StaticResource defaultDataGridCell}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Command="{Binding Path=DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" Background="Transparent" BorderBrush="Transparent">
+                                <Image Source="../../Resources/images/delete.png" Stretch="Fill"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding productCode}" Header="Produkto kodas" Width="SizeToCells" MinWidth="100" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding serialNumber}" Header="Nuoseklusis numeris" Width="SizeToCells" MinWidth="120" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding batchId}" Header="Serija" Width="SizeToCells" MinWidth="40" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding expiryDate}" Header="Galioja iki" Width="SizeToCells" MinWidth="60" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding state}" Header="Statusas" Width="SizeToCells" MinWidth="60" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding info}" Header="Informacija" Width="*" ElementStyle="{StaticResource WrapTextBlock}" IsReadOnly="True"/>
+                <DataGridTemplateColumn Header="Alert ID" Visibility="{Binding DataContext.IsAlertIdShown, Converter={StaticResource BoolToVisibilityConverter}, Source={StaticResource ProxyElement}}" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding alertId}" Style="{StaticResource WrapTextBlock}" Foreground="Red"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
